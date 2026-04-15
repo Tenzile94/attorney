@@ -2,7 +2,7 @@ export type Service = {
   slug: string
   title: string
   shortDesc: string
-  iconName: string
+  iconFile: string        // filename inside /public/services/ without .svg
   heroDesc: string
   fullDesc: string[]
   whatWeOffer: string[]
@@ -13,8 +13,8 @@ export const services: Service[] = [
   {
     slug: 'kommersiya-huququ',
     title: 'Kommersiya Hüququ',
-    shortDesc: 'Kontraktlar, şirkət qurulması, biznes münasibətləri',
-    iconName: 'Briefcase',
+    shortDesc: 'Kontraktlar, şirkət qurulması, biznes münasibətləri və korporativ idarəetmə',
+    iconFile: 'business',
     heroDesc: 'Biznesinizi hüquqi cəhətdən qorumaq üçün peşəkar kommersiya hüququ xidmətləri',
     fullDesc: [
       'Kommersiya hüququ sahəsində 25 ildən artıq təcrübəmizlə şirkətlərə və sahibkarlara kompleks hüquqi dəstək göstəririk. Biznesdə hər addım hüquqi risklərlə müşayiət olunur — biz bu riskləri minimuma endiririk.',
@@ -31,44 +31,17 @@ export const services: Service[] = [
       'İntellektual mülkiyyətin qorunması',
     ],
     process: [
-      { step: 'İlkin Məsləhət', desc: 'Biznesinitizin ehtiyaclarını öyrənirik, mövcud riskləri qiymətləndiririk.' },
+      { step: 'İlkin Məsləhət', desc: 'Biznesinizin ehtiyaclarını öyrənirik, mövcud riskləri qiymətləndiririk.' },
       { step: 'Strategiya', desc: 'Hüquqi strategiya hazırlayır, addım-addım plan müəyyənləşdiririk.' },
       { step: 'Sənədləşmə', desc: 'Bütün lazımi sənədləri hazırlayır, hüquqi çərçivəni formalaşdırırıq.' },
       { step: 'İcra və Nəzarət', desc: 'Prosesi sonuna kimi izləyir, hər mərhələdə dəstək veririk.' },
     ],
   },
   {
-    slug: 'aile-huququ',
-    title: 'Ailə Hüququ',
-    shortDesc: 'Nikah, boşanma, vəsiyyət, uşaq hüquqları',
-    iconName: 'Heart',
-    heroDesc: 'Ailə münasibətlərinizdə hüquqi məsələləri həssaslıq və peşəkarlıqla həll edirik',
-    fullDesc: [
-      'Ailə hüququ məsələləri emosional cəhətdən çox ağır olur. Biz hüquqi biliklərimizi həssaslıq və anlayışla birləşdirərək bu çətin dövrlərdə yanınızda oluruq.',
-      'Boşanma, uşaqların himayəsi, əmlak bölgüsü və vəsiyyət kimi məsələlərdə sizi qorumaq üçün güclü hüquqi nümayəndəlik təqdim edirik. Hər məsələni gizlilik çərçivəsində yüksək etika ilə idarə edirik.',
-    ],
-    whatWeOffer: [
-      'Boşanma prosesinin idarə edilməsi',
-      'Uşaqların himayəsi və görüş hüququ',
-      'Nikah müqaviləsinin hazırlanması',
-      'Əmlakın bölgüsü',
-      'Alimentin müəyyənləşdirilməsi',
-      'Övladlığa götürmə prosesləri',
-      'Vəsiyyətnamənin hazırlanması',
-      'Miras hüququ məsələləri',
-    ],
-    process: [
-      { step: 'Gizli Məsləhət', desc: 'Vəziyyətinizi tam məxfilik şəraitində dinləyirik.' },
-      { step: 'Hüquqi Qiymətləndirmə', desc: 'Mövcud seçimləri və hüquqi mövqeyinizi izah edirik.' },
-      { step: 'Danışıqlar', desc: 'Mümkün olduqda məhkəməsiz razılaşma yolunu axtarırıq.' },
-      { step: 'Məhkəmə Müdafiəsi', desc: 'Lazım gəldikdə məhkəmədə güclü nümayəndəlik edirik.' },
-    ],
-  },
-  {
     slug: 'cinayat-huququ',
     title: 'Cinayət Hüququ',
-    shortDesc: 'Cinayət işlərində müdafiə, hüquqi nümayəndəlik',
-    iconName: 'Shield',
+    shortDesc: 'Cinayət işlərində müdafiə, istintaq mərhələsindən məhkəməyə qədər tam dəstək',
+    iconFile: 'crime-icon',
     heroDesc: 'Hər cinayət işində güclü müdafiə hüququnuzu qorumaq bizim birinci prioritetimizdir',
     fullDesc: [
       'Cinayət hüququ sahəsində peşəkar müdafiə xidməti həyatı dəyişdirən qərarlara ciddi təsir göstərir. Təqsirkar olmayan şəxslərin azadlığını qorumaq, günahı azaltmaq və ədalətli prosesin təmin edilməsi üçün yorulmadan çalışırıq.',
@@ -92,10 +65,37 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: 'ailə-huququ',
+    title: 'Ailə Hüququ',
+    shortDesc: 'Nikah, boşanma, uşaq hüquqları, miras və ailə münasibətlərinin tənzimlənməsi',
+    iconFile: 'civil',
+    heroDesc: 'Ailə münasibətlərinizdə hüquqi məsələləri həssaslıq və peşəkarlıqla həll edirik',
+    fullDesc: [
+      'Ailə hüququ məsələləri emosional cəhətdən çox ağır olur. Biz hüquqi biliklərimizi həssaslıq və anlayışla birləşdirərək bu çətin dövrlərdə yanınızda oluruq.',
+      'Boşanma, uşaqların himayəsi, əmlak bölgüsü və vəsiyyət kimi məsələlərdə sizi qorumaq üçün güclü hüquqi nümayəndəlik təqdim edirik. Hər məsələni gizlilik çərçivəsində yüksək etika ilə idarə edirik.',
+    ],
+    whatWeOffer: [
+      'Boşanma prosesinin idarə edilməsi',
+      'Uşaqların himayəsi və görüş hüququ',
+      'Nikah müqaviləsinin hazırlanması',
+      'Əmlakın bölgüsü',
+      'Alimentin müəyyənləşdirilməsi',
+      'Övladlığa götürmə prosesləri',
+      'Vəsiyyətnamənin hazırlanması',
+      'Miras hüququ məsələləri',
+    ],
+    process: [
+      { step: 'Gizli Məsləhət', desc: 'Vəziyyətinizi tam məxfilik şəraitində dinləyirik.' },
+      { step: 'Hüquqi Qiymətləndirmə', desc: 'Mövcud seçimləri və hüquqi mövqeyinizi izah edirik.' },
+      { step: 'Danışıqlar', desc: 'Mümkün olduqda məhkəməsiz razılaşma yolunu axtarırıq.' },
+      { step: 'Məhkəmə Müdafiəsi', desc: 'Lazım gəldikdə məhkəmədə güclü nümayəndəlik edirik.' },
+    ],
+  },
+  {
     slug: 'mulk-huququ',
     title: 'Mülk Hüququ',
-    shortDesc: 'Daşınmaz əmlak, inşaat, torpaq münasibətləri',
-    iconName: 'Home',
+    shortDesc: 'Daşınmaz əmlak əməliyyatları, torpaq hüquqları və mülkiyyət mübahisələri',
+    iconFile: 'commersion-icon',
     heroDesc: 'Əmlak əməliyyatlarınızda hüquqi riskləri aradan qaldırır, mülkiyyətinizi qoruyuruq',
     fullDesc: [
       'Daşınmaz əmlak əməliyyatları böyük maliyyə qoyuluşu tələb edir. Ev alqı-satqısından tutmuş kommersiya əmlakı müqavilələrinə qədər hər addımda hüquqi dəstək göstəririk.',
@@ -121,8 +121,8 @@ export const services: Service[] = [
   {
     slug: 'amak-huququ',
     title: 'Əmək Hüququ',
-    shortDesc: 'İş müqavilələri, işçi-işəgötürən münasibətləri',
-    iconName: 'UserCheck',
+    shortDesc: 'İş müqavilələri, işçi-işəgötürən münasibətləri, işdən çıxarılma mübahisələri',
+    iconFile: 'contact',
     heroDesc: 'İşəgötürən və işçilərin hüquqlarını qorumaq üçün hərtərəfli əmək hüququ xidməti',
     fullDesc: [
       'Əmək münasibətlərindəki hüquqi çətinliklər həm işçilər, həm də işəgötürənlər üçün ciddi nəticələrə yol aça bilər. Hər iki tərəfin maraqlarını anlayır, ədalətli həllər tapırıq.',
@@ -146,37 +146,10 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: 'vergi-huququ',
-    title: 'Vergi Hüququ',
-    shortDesc: 'Vergi planlaşdırması, audit, vergi mübahisələri',
-    iconName: 'Receipt',
-    heroDesc: 'Vergi öhdəliklərini optimallaşdırmaq və vergi orqanları ilə mübahisələri həll etmək',
-    fullDesc: [
-      'Vergi qanunvericiliyi mürəkkəb və dəyişkəndir. Düzgün vergi planlaşdırması şirkətin maliyyə sağlamlığı üçün kritik əhəmiyyət kəsb edir.',
-      'Vergi orqanları ilə mübahisələrdə güclü müdafiə, vergi yoxlamalarında dəstək və vergi öhdəliklərinin qanuni çərçivədə optimallaşdırılması üçün peşəkar xidmət göstəririk.',
-    ],
-    whatWeOffer: [
-      'Vergi planlaşdırması və məsləhəti',
-      'Vergi yoxlamalarında nümayəndəlik',
-      'Vergi orqanları ilə mübahisələrin həlli',
-      'ƏDV məsələləri',
-      'Korporativ vergi optimizasiyası',
-      'Vergi şikayətlərinin hazırlanması',
-      'Beynəlxalq vergi məsələləri',
-      'Vergi cinayətləri üzrə müdafiə',
-    ],
-    process: [
-      { step: 'Vergi Auditi', desc: 'Mövcud vergi öhdəliklərini və riskləri qiymətləndiririk.' },
-      { step: 'Optimallaşdırma', desc: 'Qanuni çərçivədə vergi yükünü azaltmaq üçün strategiya hazırlayırıq.' },
-      { step: 'Sənədləşmə', desc: 'Bütün vergi sənədlərini düzgün hazırlayır, risksizlik təmin edirik.' },
-      { step: 'Mübahisə Həlli', desc: 'Vergi orqanları ilə mübahisələrdə güclü nümayəndəlik edirik.' },
-    ],
-  },
-  {
     slug: 'idari-huquq',
     title: 'İdari Hüquq',
-    shortDesc: 'Dövlət orqanları ilə münasibətlər, lisenziyalar',
-    iconName: 'Landmark',
+    shortDesc: 'Dövlət orqanları ilə münasibətlər, lisenziyalar, inzibati şikayətlər',
+    iconFile: 'license',
     heroDesc: 'Dövlət orqanları ilə münasibətlərdə hüquqlarınızı qorumaq üçün professional dəstək',
     fullDesc: [
       'Dövlət orqanları ilə qarşıdurmalar ciddi hüquqi bilgi tələb edir. İdari orqanların qərarlarına etiraz, lisenziya məsələləri və dövlət tenderləri sahəsində geniş təcrübəyə malikik.',
@@ -190,40 +163,13 @@ export const services: Service[] = [
       'İnzibati cəzalara etiraz',
       'Dövlət müəssisələri ilə münasibətlər',
       'İnzibati məhkəmədə nümayəndəlik',
-      'Normativ aktların şərhini üzrə məsləhət',
+      'Normativ aktların şərhi üzrə məsləhət',
     ],
     process: [
       { step: 'Qərarın Analizi', desc: 'İdari orqanın qərarını hüquqi cəhətdən qiymətləndiririk.' },
       { step: 'Etiraz Strategiyası', desc: 'Ən effektiv etiraz yolunu müəyyənləşdiririk.' },
       { step: 'Şikayət Hazırlığı', desc: 'Güclü hüquqi arqumentlərə əsaslanan şikayət yazırıq.' },
       { step: 'Prosesin İzlənməsi', desc: 'Bütün mərhələlərdə nümayəndəlik edib nəticəyə çatırıq.' },
-    ],
-  },
-  {
-    slug: 'beynalxalq-huquq',
-    title: 'Beynəlxalq Hüquq',
-    shortDesc: 'Beynəlxalq müqavilələr, xarici investisiyalar',
-    iconName: 'Globe',
-    heroDesc: 'Beynəlxalq biznes münasibətlərinizdə hüquqi riskləri idarə edir, maraqlarınızı qoruyuruq',
-    fullDesc: [
-      'Beynəlxalq ticarət və investisiya mühiti mürəkkəb hüquqi çərçivəni əhatə edir. Müxtəlif ölkələrin qanunvericiliyini, beynəlxalq müqavilələri və arbitraj proseslərini yaxından bilirik.',
-      'Xarici şirkətlərlə müqavilələr, investisiya uyuşmazlıqları, beynəlxalq ticarət məsələləri və xarici arbitrajda nümayəndəlik sahəsində geniş təcrübəmiz var.',
-    ],
-    whatWeOffer: [
-      'Beynəlxalq ticarət müqavilələri',
-      'Xarici investisiya hüquqi dəstəyi',
-      'Beynəlxalq arbitraj',
-      'İkitərəfli müqavilə şərhləri',
-      'Eksport-import hüququ',
-      'Beynəlxalq mülkiyyət hüququ',
-      'Diplomatik qoruma məsələləri',
-      'Xarici şirkətin Azərbaycanda qeydiyyatı',
-    ],
-    process: [
-      { step: 'Hüquqi Analiz', desc: 'Beynəlxalq hüquqi çərçivəni və tərəflərin öhdəliklərini analiz edirik.' },
-      { step: 'Strategiya', desc: 'Müqavilə strukturunu və hüquqi mühafizə mexanizmlərini müəyyənləşdiririk.' },
-      { step: 'Danışıqlar', desc: 'Beynəlxalq standartlara uyğun müzakirələr aparırıq.' },
-      { step: 'Arbitraj/Məhkəmə', desc: 'Mübahisə yaranan halda beynəlxalq arbitrajda nümayəndəlik edirik.' },
     ],
   },
 ]

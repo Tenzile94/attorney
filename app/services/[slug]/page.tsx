@@ -1,18 +1,8 @@
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle2, Briefcase, Heart, Shield, Home, UserCheck, Receipt, Landmark, Globe, ChevronRight } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react'
 import { services, getServiceBySlug } from '@/lib/services-data'
 import type { Metadata } from 'next'
-
-const iconMap: Record<string, React.ReactNode> = {
-  Briefcase: <Briefcase className="w-10 h-10 text-accent" />,
-  Heart: <Heart className="w-10 h-10 text-accent" />,
-  Shield: <Shield className="w-10 h-10 text-accent" />,
-  Home: <Home className="w-10 h-10 text-accent" />,
-  UserCheck: <UserCheck className="w-10 h-10 text-accent" />,
-  Receipt: <Receipt className="w-10 h-10 text-accent" />,
-  Landmark: <Landmark className="w-10 h-10 text-accent" />,
-  Globe: <Globe className="w-10 h-10 text-accent" />,
-}
 
 export async function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }))
@@ -75,8 +65,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="max-w-3xl">
-            <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-              {iconMap[service.iconName]}
+            <div className="w-16 h-16 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-6">
+              <div className="relative w-8 h-8">
+                <Image
+                  src={`/services/${service.iconFile}.svg`}
+                  alt={service.title}
+                  fill
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
             </div>
             <p className="text-sm text-accent uppercase tracking-widest mb-3">Hüquqi Xidmət</p>
             <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 leading-tight">{service.title}</h1>
@@ -257,7 +254,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
           <div className="border-t border-border pt-6 text-center text-muted-foreground text-sm">
-            <p>© 2024 Vəkil Ayəzbay Ahmadov. Bütün hüquqlar qorunur.</p>
+            <p>© 2026  Vəkil Ayəzbay Ahmadov. Bütün hüquqlar qorunur.</p>
           </div>
         </div>
       </footer>

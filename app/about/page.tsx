@@ -183,7 +183,7 @@ export default function AboutPage() {
       {/* Footer */}
       <footer className="bg-card border-t border-border py-8">
         <div className="max-w-7xl mx-auto px-4 text-center text-muted-foreground text-sm">
-          <p>&copy; 2024 Vəkil Ayəzbay Ahmadov. Bütün hüquqlar qorunur.</p>
+          <p>&copy; 2026  Vəkil Ayəzbay Ahmadov. Bütün hüquqlar qorunur.</p>
         </div>
       </footer>
     </div>

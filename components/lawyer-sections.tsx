@@ -1,20 +1,9 @@
 'use client'
 import Image from 'next/image'
-import { MapPin, Phone, Mail, Clock, Plus, Minus, Zap, Handshake, Lock, Scale, Briefcase, Heart, Shield, Home, UserCheck, Receipt, Landmark, Globe, ArrowRight } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Plus, Minus, Zap, Handshake, Lock, Scale, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { services } from '@/lib/services-data'
 import { FadeUp, FadeIn, SlideIn, StaggerList, StaggerItem } from '@/components/motion'
-
-const iconMap: Record<string, React.ReactNode> = {
-  Briefcase: <Briefcase className="w-7 h-7" />,
-  Heart: <Heart className="w-7 h-7" />,
-  Shield: <Shield className="w-7 h-7" />,
-  Home: <Home className="w-7 h-7" />,
-  UserCheck: <UserCheck className="w-7 h-7" />,
-  Receipt: <Receipt className="w-7 h-7" />,
-  Landmark: <Landmark className="w-7 h-7" />,
-  Globe: <Globe className="w-7 h-7" />,
-}
 
 export const HeroSection = () => (
   <section className="relative h-screen min-h-[640px] flex items-center justify-between overflow-hidden">
@@ -116,36 +105,48 @@ export const ServicesSection = () => (
         <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
       </FadeUp>
 
-      <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((svc) => (
           <StaggerItem key={svc.slug}>
             <a
               href={`/services/${svc.slug}`}
-              className="group relative flex flex-col items-center text-center px-8 py-12 bg-card border border-white/[0.07] rounded-xl h-full overflow-hidden transition-all duration-300 hover:border-accent/50 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.5),0_0_0_1px_rgba(188,152,68,0.2)]"
+              className="group relative flex flex-col bg-card border border-white/[0.07] rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(188,152,68,0.15)]"
             >
-              {/* Bottom accent bar */}
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Top gold bar that expands on hover */}
+              <div className="h-[2px] bg-gradient-to-r from-transparent via-accent/60 to-transparent group-hover:via-accent transition-all duration-300" />
 
-              {/* Icon circle */}
-              <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center text-accent mb-8 group-hover:border-accent/60 group-hover:bg-accent/10 transition-all duration-300">
-                <div className="[&>svg]:w-9 [&>svg]:h-9">
-                  {iconMap[svc.iconName]}
+              <div className="flex flex-col items-start p-8 h-full">
+                {/* Icon container */}
+                <div className="w-16 h-16 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-7 group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-300 flex-shrink-0">
+                  <div className="relative w-8 h-8">
+                    <Image
+                      src={`/services/${svc.iconFile}.svg`}
+                      alt={svc.title}
+                      fill
+                      className="object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="font-serif font-bold text-xl text-white mb-3 leading-snug group-hover:text-accent transition-colors duration-300">
+                  {svc.title}
+                </h3>
+
+                {/* Divider */}
+                <div className="w-8 h-px bg-accent/40 mb-4 group-hover:w-14 transition-all duration-500" />
+
+                {/* Description */}
+                <p className="text-muted-foreground text-base leading-relaxed flex-1">
+                  {svc.shortDesc}
+                </p>
+
+                {/* Read more indicator */}
+                <div className="mt-6 flex items-center gap-2 text-sm text-accent/60 group-hover:text-accent transition-colors duration-300">
+                  <span>Ətraflı</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
-
-              {/* Title */}
-              <h3 className="font-serif font-bold text-xl text-white mb-4 leading-snug group-hover:text-accent transition-colors duration-300">
-                {svc.title}
-              </h3>
-
-              {/* Divider line */}
-              <div className="w-10 h-px bg-accent/40 mb-5 group-hover:w-16 transition-all duration-300" />
-
-              {/* Description */}
-              <p className="text-muted-foreground text-base leading-relaxed flex-1">
-                {svc.shortDesc}
-              </p>
-
             </a>
           </StaggerItem>
         ))}
