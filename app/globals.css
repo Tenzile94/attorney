@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: 7 10 18;          /* #070a12 — deepest navy */
+  --foreground: 248 248 252;      /* near-pure white */
+  --card: 12 18 30;               /* #0c121e — slightly lighter layer */
+  --card-foreground: 248 248 252;
+  --primary: 16 24 40;            /* #101828 — mid-dark for header / CTA bands */
+  --primary-foreground: 255 255 255;
+  --accent: 188 152 68;           /* #bc9844 — warm gold */
+  --accent-foreground: 8 8 8;
+  --muted: 80 92 112;
+  --muted-foreground: 148 162 185;
+  --border: 28 40 60;             /* #1c283c — subtle but visible */
+  --input: 16 24 42;
+  --ring: 188 152 68;
+}
+
+@theme inline {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Lora', serif;
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
+  --color-primary: rgb(var(--primary));
+  --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-border: rgb(var(--border));
+  --color-input: rgb(var(--input));
+  --color-ring: rgb(var(--ring));
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+  .bg-gold-gradient {
+    background: linear-gradient(90deg, #7a5c1c 0%, #b8881e 25%, #e0b84a 50%, #b8881e 75%, #7a5c1c 100%);
+  }
+  .card-glow {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.5);
+  }
+  .card-glow-hover:hover {
+    box-shadow: 0 0 0 1px rgba(188,152,68,0.4), 0 8px 32px rgba(0,0,0,0.6), 0 0 20px rgba(188,152,68,0.08);
+  }
+}
