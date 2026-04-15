@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import { HeroSection, AboutSection, ServicesSection, WhyChooseSection, PracticeSection, FAQSection, MapSection, ContactSection } from '@/components/lawyer-sections'
 import { FadeUp, FadeIn, StaggerList, StaggerItem } from '@/components/motion'
+import SiteHeader from '@/components/site-header'
 
 export default function Home() {
   const testimonials = [
@@ -27,80 +28,7 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-primary/95 backdrop-blur-md border-b border-white/[0.06]">
-        {/* Top contact bar */}
-        <div className="border-b border-white/[0.06] bg-background/40">
-          <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-xs text-muted-foreground">
-            <div className="flex items-center gap-6">
-              <a href="tel:+994124966666" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-                <svg className="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                +994 12 496 66 66
-              </a>
-              <a href="mailto:ayazbay@huquqcu.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-                <svg className="w-3 h-3 text-accent" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                ayazbay@huquqcu.com
-              </a>
-            </div>
-            <div className="hidden md:flex items-center gap-1.5 text-accent font-medium">
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/></svg>
-              B.e–Cümə: 09:00–18:00
-            </div>
-          </div>
-        </div>
-
-        {/* Main nav */}
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="py-4 flex items-center justify-between gap-8">
-
-            {/* Logo */}
-            <a href="/" className="flex items-center gap-3 flex-shrink-0 group">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                <span className="text-accent font-serif font-bold text-lg leading-none">V</span>
-              </div>
-              <div className="hidden sm:block">
-                <div className="text-white font-serif font-bold text-base leading-tight">Ayazbay Ahmadov</div>
-                <div className="text-accent text-[10px] uppercase tracking-[0.2em] leading-tight">Vəkil • Hüquqçu</div>
-              </div>
-            </a>
-
-            {/* Nav links */}
-            <nav className="hidden md:flex items-center gap-1">
-              {[
-                { label: 'Haqqımda', href: '#about' },
-                { label: 'Xidmətlər', href: '#services' },
-                { label: 'Müştərilər', href: '#testimonials' },
-                { label: 'SSS', href: '#faq' },
-                { label: 'Əlaqə', href: '#contact' }
-              ].map(item => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="relative px-4 py-2 text-sm text-muted-foreground hover:text-white transition-colors duration-200 group"
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-4 right-4 h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
-                </a>
-              ))}
-            </nav>
-
-            {/* CTA */}
-            <div className="flex items-center gap-3">
-              <a href="tel:+994124966666" className="hidden lg:flex items-center gap-2 px-4 py-2 border border-accent/40 text-accent text-sm font-medium rounded hover:bg-accent/10 transition-colors">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                Zəng Et
-              </a>
-              <a href="#contact" className="hidden md:block px-5 py-2 bg-accent text-black text-sm font-semibold hover:opacity-90 transition rounded">
-                Konsultasiya Al
-              </a>
-              <button className="md:hidden text-muted-foreground hover:text-white transition p-1">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-              </button>
-            </div>
-
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <HeroSection />
 
