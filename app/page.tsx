@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { HeroSection, AboutSection, ServicesSection, WhyChooseSection, PracticeSection, FAQSection, MapSection, ContactSection } from '@/components/lawyer-sections'
 import { FadeUp, FadeIn, StaggerList, StaggerItem } from '@/components/motion'
 import SiteHeader from '@/components/site-header'
@@ -88,6 +89,7 @@ export default function Home() {
 
       <PracticeSection />
       <FAQSection id="faq" />
+      <ContactSection />
       <MapSection />
 
       {/* Footer */}
@@ -116,12 +118,12 @@ export default function Home() {
             <div>
               <h4 className="font-semibold text-base text-white mb-5">Xidmətlər</h4>
               <ul className="text-muted-foreground text-sm space-y-3">
-                <li><a href="/services/kommersiya-huququ" className="hover:text-accent transition-colors">Kommersiya Hüququ</a></li>
-                <li><a href="/services/cinayat-huququ" className="hover:text-accent transition-colors">Cinayət Hüququ</a></li>
-                <li><a href="/services/ailə-huququ" className="hover:text-accent transition-colors">Ailə Hüququ</a></li>
-                <li><a href="/services/mulk-huququ" className="hover:text-accent transition-colors">Mülk Hüququ</a></li>
-                <li><a href="/services/amak-huququ" className="hover:text-accent transition-colors">Əmək Hüququ</a></li>
-                <li><a href="/services/idari-huquq" className="hover:text-accent transition-colors">İdari Hüquq</a></li>
+                <li><Link href="/services/kommersiya-huququ" className="hover:text-accent transition-colors">Kommersiya Hüququ</Link></li>
+                <li><Link href="/services/cinayat-huququ" className="hover:text-accent transition-colors">Cinayət Hüququ</Link></li>
+                <li><Link href="/services/ailə-huququ" className="hover:text-accent transition-colors">Ailə Hüququ</Link></li>
+                <li><Link href="/services/mulk-huququ" className="hover:text-accent transition-colors">Mülk Hüququ</Link></li>
+                <li><Link href="/services/amak-huququ" className="hover:text-accent transition-colors">Əmək Hüququ</Link></li>
+                <li><Link href="/services/idari-huquq" className="hover:text-accent transition-colors">İdari Hüquq</Link></li>
               </ul>
             </div>
 
@@ -209,9 +211,9 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
             <p>&copy; 2026  Vəkil Ayazbay Ahmadov. Bütün hüquqlar qorunur.</p>
             <div className="flex items-center gap-5">
-                <a href="#" className="hover:text-accent transition-colors">Məxfilik Siyasəti</a>
+                <Link href="#" className="hover:text-accent transition-colors">Məxfilik Siyasəti</Link>
               <span className="text-white/10">|</span>
-              <a href="#" className="hover:text-accent transition-colors">İstifadə Şərtləri</a>
+              <Link href="#" className="hover:text-accent transition-colors">İstifadə Şərtləri</Link>
             </div>
           </div>
         </div>

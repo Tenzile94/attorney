@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { services } from '@/lib/services-data'
 
@@ -48,7 +49,7 @@ export default function SiteHeader() {
         <div className="py-4 flex items-center justify-between gap-8">
 
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 flex-shrink-0 group">
+          <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
             <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
               <span className="text-accent font-serif font-bold text-lg leading-none">V</span>
             </div>
@@ -56,21 +57,21 @@ export default function SiteHeader() {
               <div className="text-white font-serif font-bold text-base leading-tight">Ayazbay Ahmadov</div>
               <div className="text-accent text-[10px] uppercase tracking-[0.2em] leading-tight">Vəkil • Hüquqçu</div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
 
             {/* Regular links */}
             {navLinks.map(item => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 className="relative px-4 py-2 text-sm text-muted-foreground hover:text-white transition-colors duration-200 group"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-4 right-4 h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
-              </a>
+              </Link>
             ))}
 
             {/* Services dropdown */}
@@ -103,8 +104,8 @@ export default function SiteHeader() {
 
                   <div className="p-2">
                     <p className="px-3 py-2 text-[10px] text-muted-foreground uppercase tracking-widest">Hüquqi Xidmətlər</p>
-                    {services.map((svc, i) => (
-                      <a
+                    {services.map((svc) => (
+                      <Link
                         key={svc.slug}
                         href={`/services/${svc.slug}`}
                         onClick={() => setServicesOpen(false)}
@@ -120,12 +121,12 @@ export default function SiteHeader() {
                           />
                         </div>
                         <span className="text-sm text-muted-foreground group-hover/item:text-white transition-colors">{svc.title}</span>
-                      </a>
+                      </Link>
                     ))}
                   </div>
 
                   <div className="border-t border-white/[0.06] p-2">
-                    <a
+                    <Link
                       href="#services"
                       onClick={() => setServicesOpen(false)}
                       className="flex items-center justify-center gap-2 w-full px-3 py-2 text-xs text-accent hover:bg-accent/10 rounded-lg transition-colors"
@@ -134,7 +135,7 @@ export default function SiteHeader() {
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -150,9 +151,9 @@ export default function SiteHeader() {
               </svg>
               Zəng Et
             </a>
-            <a href="#contact" className="hidden md:block px-5 py-2 bg-accent text-black text-sm font-semibold hover:opacity-90 transition rounded">
+            <Link href="#contact" className="hidden md:block px-5 py-2 bg-accent text-black text-sm font-semibold hover:opacity-90 transition rounded">
               Konsultasiya Al
-            </a>
+            </Link>
 
             {/* Mobile burger */}
             <button
@@ -180,14 +181,14 @@ export default function SiteHeader() {
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
 
             {navLinks.map(item => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className="px-4 py-3 text-sm text-muted-foreground hover:text-white hover:bg-white/[0.04] rounded-lg transition-colors"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
 
             {/* Mobile services accordion */}
@@ -208,7 +209,7 @@ export default function SiteHeader() {
               {mobileServicesOpen && (
                 <div className="ml-4 mt-1 border-l border-white/[0.08] pl-4 flex flex-col gap-0.5">
                   {services.map(svc => (
-                    <a
+                    <Link
                       key={svc.slug}
                       href={`/services/${svc.slug}`}
                       onClick={() => setMobileOpen(false)}
@@ -222,7 +223,7 @@ export default function SiteHeader() {
                         className="w-3.5 h-3.5 object-contain brightness-0 invert opacity-50"
                       />
                       {svc.title}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -232,7 +233,13 @@ export default function SiteHeader() {
               <a href="tel:+994124966666" className="flex items-center justify-center gap-2 py-3 border border-accent/40 text-accent text-sm font-medium rounded-lg hover:bg-accent/10 transition-colors">
                 Zəng Et
               </a>
-              <a href="#contact" onClick={() => setMobileOpen(false)} className="py-3 bg-accent text-black text-sm font-semibold text-center rounded-lg hover:opacity-90 transition">
+              <a
+                href="https://wa.me/994512000000"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="py-3 bg-accent text-black text-sm font-semibold text-center rounded-lg hover:opacity-90 transition"
+              >
                 Konsultasiya Al
               </a>
             </div>

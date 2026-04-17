@@ -1,9 +1,27 @@
 'use client'
 import Image from 'next/image'
-import { MapPin, Phone, Mail, Clock, Plus, Minus, Zap, Handshake, Lock, Scale, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { MapPin, Phone, Mail, Clock, Plus, Minus, Zap, Handshake, Lock, Scale, ArrowRight, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 import { services } from '@/lib/services-data'
 import { FadeUp, FadeIn, SlideIn, StaggerList, StaggerItem } from '@/components/motion'
+
+const WA_LINK = 'https://wa.me/994512000000'
+
+/** Desktop → scroll to #contact  |  Mobile → WhatsApp */
+const CtaButton = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+  <>
+    <Link href="#contact" className={`hidden md:inline-flex items-center gap-2 ${className}`}>
+      {children}
+    </Link>
+    <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className={`inline-flex md:hidden items-center gap-2 ${className}`}>
+      {children}
+    </a>
+  </>
+)
 
 export const HeroSection = () => (
   <section className="relative h-screen min-h-[640px] flex items-center justify-between overflow-hidden">
@@ -32,12 +50,12 @@ export const HeroSection = () => (
             <span>✔ İlk konsultasiya mümkündür</span>
           </div>
           <div className="flex gap-4">
-            <button className="px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
+            <CtaButton className="px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
               Pulsuz Konsultasiya Al
-            </button>
-            <a href="/about" className="px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">
+            </CtaButton>
+            <Link href="/about" className="px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">
               Mənim Haqqımda
-            </a>
+            </Link>
           </div>
         </FadeUp>
       </div>
@@ -83,9 +101,9 @@ export const AboutSection = () => (
                 </div>
               ))}
             </div>
-            <a href="/about" className="inline-block px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
+            <Link href="/about" className="inline-block px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
               Haqqımda Ətraflı
-            </a>
+            </Link>
           </div>
         </SlideIn>
       </div>
@@ -108,7 +126,7 @@ export const ServicesSection = () => (
       <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((svc) => (
           <StaggerItem key={svc.slug}>
-            <a
+            <Link
               href={`/services/${svc.slug}`}
               className="group relative flex flex-col bg-card border border-white/[0.07] rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(188,152,68,0.15)]"
             >
@@ -147,16 +165,16 @@ export const ServicesSection = () => (
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
-            </a>
+            </Link>
           </StaggerItem>
         ))}
       </StaggerList>
 
       <FadeUp delay={0.3} className="mt-16 text-center">
         <p className="text-muted-foreground text-base mb-4">Xidmətlər haqqında sualınız var?</p>
-        <a href="#contact" className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
+        <CtaButton className="px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
           Pulsuz Məsləhət Al <ArrowRight className="w-4 h-4" />
-        </a>
+        </CtaButton>
       </FadeUp>
     </div>
   </section>
@@ -234,9 +252,9 @@ export const WhyChooseSection = () => {
             <p className="text-muted-foreground text-base">Bu gün müraciət edin və ilkin konsultasiya əldə edin.</p>
           </div>
           <div className="flex flex-col items-center gap-2 flex-shrink-0">
-            <a href="#contact" className="px-10 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
+            <CtaButton className="px-10 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
               Pulsuz Konsultasiya Al
-            </a>
+            </CtaButton>
             <p className="text-xs text-muted-foreground">✔ Məxfi • ✔ Öhdəliksiz • ✔ Sürətli cavab</p>
           </div>
         </FadeUp>
@@ -327,99 +345,187 @@ export const FAQSection = ({ id }: { id?: string } = {}) => {
   )
 }
 
-export const MapSection = () => (
-  <section className="py-32 bg-background">
-    <div className="max-w-7xl mx-auto px-4">
-      <FadeUp><h2 className="text-4xl font-serif font-bold text-center mb-16 text-white">Ünvanımız</h2></FadeUp>
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <div className="space-y-8">
-            <div className="flex gap-4">
-              <MapPin className="w-8 h-8 text-accent flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-lg text-accent mb-2">Ünvan</p>
-                <p className="text-muted-foreground text-base">Bakı, Nəsimi rayonu, Aziz Ələkbərov küçəsi 201</p>
-                <p className="text-muted-foreground text-base mt-1">Həmrəy-Ələkbərov Biznees Mərkəzi, 7-ci mərtəbə</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <Phone className="w-8 h-8 text-accent flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-lg text-accent mb-2">Telefon</p>
-                <p className="text-muted-foreground text-base">+994 12 496 66 66</p>
-                <p className="text-muted-foreground text-base">+994 51 000 00 00</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <Mail className="w-8 h-8 text-accent flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-lg text-accent mb-2">E-mail</p>
-                <p className="text-muted-foreground text-base">ayazbay@huquqcu.com</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <Clock className="w-8 h-8 text-accent flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-lg text-accent mb-2">İş Saatları</p>
-                <p className="text-muted-foreground text-base">Bazar ertəsi - Cümə: 09:00 - 18:00</p>
-                <p className="text-muted-foreground text-base">Şənbə: 09:00 - 14:00</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="h-96 rounded-lg overflow-hidden border border-border/50 bg-card">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.4850700000003!2d49.838!3d40.388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307e0e9a7b0001%3A0x400"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-)
+const contactSchema = z.object({
+  name: z.string().min(2, 'Ad ən az 2 simvol olmalıdır'),
+  email: z.string().email('Düzgün e-mail ünvanı daxil edin'),
+  phone: z.string().min(7, 'Telefon nömrəsi tələb olunur'),
+  subject: z.string().min(3, 'Mövzu tələb olunur'),
+  message: z.string().min(10, 'Mesaj ən az 10 simvol olmalıdır'),
+})
 
-export const ContactSection = () => (
-  <section className="py-32 bg-primary">
-    <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
-      <div>
-        <h2 className="text-4xl font-serif font-bold mb-8">Əlaqə</h2>
-        <div className="space-y-6">
-          <div className="flex gap-4">
-            <Phone className="w-6 h-6 text-accent flex-shrink-0" />
-            <div>
-              <p className="font-semibold text-accent">Telefon</p>
-              <p className="text-muted-foreground">+994 12 496 66 66</p>
+type ContactFormData = z.infer<typeof contactSchema>
+
+export const ContactSection = () => {
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({ resolver: zodResolver(contactSchema) })
+
+  const onSubmit = async (data: ContactFormData) => {
+    setSubmitStatus('idle')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        setSubmitStatus('success')
+        reset()
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch {
+      setSubmitStatus('error')
+    }
+  }
+
+  const inputClass = (hasError: boolean) =>
+    `w-full px-4 py-3 bg-black/30 backdrop-blur-sm border ${hasError ? 'border-red-400' : 'border-white/[0.15]'} rounded-lg focus:outline-none focus:border-accent text-base text-white placeholder:text-white/40 transition-colors`
+
+  return (
+    <section id="contact" className="relative py-32 overflow-hidden">
+      {/* Background image */}
+      <Image
+        src="/consultation.jpg"
+        alt="Consultation"
+        fill
+        className="object-cover object-center"
+        priority={false}
+      />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(rgba(0, 0, 0, 0.84), rgba(0,0,0,0.88))' }} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
+        <FadeUp className="text-center mb-16">
+          <p className="text-base text-accent uppercase tracking-widest mb-3">Əlaqə</p>
+          <h2 className="text-4xl font-serif font-bold text-white">Mənimlə  Əlaqə Saxlayın</h2>
+          <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
+        </FadeUp>
+
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* Left — contact info */}
+          <SlideIn from="left">
+            <div className="space-y-8">
+              <div>
+                <p className="text-white/70 text-base leading-relaxed mb-8">
+                  Hüquqi məsələniz üçün Mənimlə  əlaqə saxlayın. 24 saat ərzində cavab veririk.
+                </p>
+              </div>
+              {[
+                { icon: <Phone className="w-6 h-6 text-accent" />, label: 'Telefon', lines: ['+994 12 496 66 66', '+994 51 000 00 00'] },
+                { icon: <Mail className="w-6 h-6 text-accent" />, label: 'E-mail', lines: ['ayazbay@huquqcu.com'] },
+                { icon: <MapPin className="w-6 h-6 text-accent" />, label: 'Ünvan', lines: ['Bakı, Nəsimi rayonu, Aziz Ələkbərov küçəsi 201', 'Həmrəy-Ələkbərov Biznes Mərkəzi, 7-ci mərtəbə'] },
+                { icon: <Clock className="w-6 h-6 text-accent" />, label: 'İş Saatları', lines: ['Bazar ertəsi – Cümə: 09:00 – 18:00', 'Şənbə: 09:00 – 14:00'] },
+              ].map((item) => (
+                <div key={item.label} className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-accent text-base mb-1">{item.label}</p>
+                    {item.lines.map((l) => (
+                      <p key={l} className="text-white/70 text-base">{l}</p>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="flex gap-4">
-            <Mail className="w-6 h-6 text-accent flex-shrink-0" />
-            <div>
-              <p className="font-semibold text-accent">E-mail</p>
-              <p className="text-muted-foreground">ayazbay@huquqcu.com</p>
+          </SlideIn>
+
+          {/* Right — contact form */}
+          <SlideIn from="right" delay={0.1}>
+            <div className="bg-black/40 backdrop-blur-md border border-white/[0.12] rounded-2xl p-8">
+              <h3 className="font-serif font-bold text-xl text-white mb-6">Mesaj Göndərin</h3>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <input {...register('name')} placeholder="Adınız *" className={inputClass(!!errors.name)} />
+                    {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
+                  </div>
+                  <div>
+                    <input {...register('phone')} placeholder="Telefon *" className={inputClass(!!errors.phone)} />
+                    {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone.message}</p>}
+                  </div>
+                </div>
+                <div>
+                  <input {...register('email')} type="email" placeholder="E-mail *" className={inputClass(!!errors.email)} />
+                  {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
+                </div>
+                <div>
+                  <input {...register('subject')} placeholder="Mövzu *" className={inputClass(!!errors.subject)} />
+                  {errors.subject && <p className="text-red-400 text-xs mt-1">{errors.subject.message}</p>}
+                </div>
+                <div>
+                  <textarea
+                    {...register('message')}
+                    placeholder="Mesajınız *"
+                    rows={5}
+                    className={`${inputClass(!!errors.message)} resize-none`}
+                  />
+                  {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
+                </div>
+
+                {submitStatus === 'success' && (
+                  <div className="flex items-center gap-2 text-green-400 text-sm bg-green-400/10 border border-green-400/20 rounded-lg px-4 py-3">
+                    <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                    Mesajınız uğurla göndərildi. Tezliklə sizinlə əlaqə saxlayacağıq.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="flex items-center gap-2 text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-3">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    Göndərilmə zamanı xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-6 py-3 bg-accent text-black font-semibold hover:opacity-90 disabled:opacity-60 transition rounded-lg flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <><Loader2 className="w-4 h-4 animate-spin" /> Göndərilir...</>
+                  ) : (
+                    <>Göndər <ArrowRight className="w-4 h-4" /></>
+                  )}
+                </button>
+              </form>
             </div>
-          </div>
-          <div className="flex gap-4">
-            <MapPin className="w-6 h-6 text-accent flex-shrink-0" />
-            <div>
-              <p className="font-semibold text-accent">Ünvan</p>
-              <p className="text-muted-foreground">Bakı, Aziz Ələkbərov 201</p>
-            </div>
-          </div>
+          </SlideIn>
         </div>
       </div>
-      <div className="bg-primary-light/50 p-8 rounded-lg">
-        <form className="space-y-4">
-          <input placeholder="Adınız" className="w-full px-4 py-3 bg-primary/50 border border-border rounded focus:outline-none focus:border-accent text-base" />
-          <input placeholder="E-mail" type="email" className="w-full px-4 py-3 bg-primary/50 border border-border rounded focus:outline-none focus:border-accent text-base" />
-          <input placeholder="Telefon" className="w-full px-4 py-3 bg-primary/50 border border-border rounded focus:outline-none focus:border-accent text-base" />
-          <textarea placeholder="Mesaj" rows={4} className="w-full px-4 py-3 bg-primary/50 border border-border rounded focus:outline-none focus:border-accent resize-none text-base"></textarea>
-          <button className="w-full px-6 py-3 bg-accent text-primary font-semibold hover:opacity-90 transition rounded">Göndər</button>
-        </form>
+    </section>
+  )
+}
+
+export const MapSection = () => (
+  <section className="bg-background">
+    <div className="max-w-7xl mx-auto px-4 pb-16">
+      <FadeUp className="text-center py-16">
+        <p className="text-base text-accent uppercase tracking-widest mb-3">Ünvanımız</p>
+        <h2 className="text-4xl font-serif font-bold text-white">Ofisimizi Tapın</h2>
+        <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
+      </FadeUp>
+      <div className="rounded-2xl overflow-hidden border border-white/[0.07] shadow-[0_20px_60px_rgba(0,0,0,0.5)]" style={{ height: '480px' }}>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.4850700000003!2d49.838!3d40.388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307e0e9a7b0001%3A0x400"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+      <div className="mt-6 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+        <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> Bakı, Nəsimi rayonu, Aziz Ələkbərov küçəsi 201</span>
+        <span className="flex items-center gap-2"><Phone className="w-4 h-4 text-accent" /> +994 12 496 66 66</span>
+        <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-accent" /> B.e–Cümə: 09:00–18:00</span>
       </div>
     </div>
   </section>
