@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { services } from '@/lib/services-data'
-import { FadeUp, FadeIn, SlideIn, StaggerList, StaggerItem } from '@/components/motion'
+import { FadeUp, SlideIn, StaggerList, StaggerItem } from '@/components/motion'
 
 const WA_LINK = 'https://wa.me/994512000000'
 

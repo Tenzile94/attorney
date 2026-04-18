@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { HeroSection, AboutSection, ServicesSection, WhyChooseSection, PracticeSection, FAQSection, MapSection, ContactSection } from '@/components/lawyer-sections'
-import { FadeUp, FadeIn, StaggerList, StaggerItem } from '@/components/motion'
+import { FadeUp, StaggerList, StaggerItem } from '@/components/motion'
 import SiteHeader from '@/components/site-header'
 
 export default function Home() {
