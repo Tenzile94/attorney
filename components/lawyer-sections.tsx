@@ -27,38 +27,64 @@ export const HeroSection = () => (
   <section className="relative min-h-screen flex items-center overflow-x-hidden">
     <div className="absolute inset-0 z-0">
       <Image src="/hero-bg.jpg" alt="Hero" fill className="object-cover opacity-40" />
+      {/* stronger dark overlay on mobile for readability */}
+      <div className="absolute inset-0 bg-background/60 md:bg-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
     </div>
-    <div className="relative z-10 max-w-7xl mx-auto px-4 pt-24 pb-16 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
+    <div className="relative z-10 max-w-7xl mx-auto px-5 pt-28 pb-14 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
       <div className="text-center md:text-left">
+
+        {/* Badge — mobile only shows short label */}
+        <FadeUp delay={0.05}>
+          <span className="inline-block text-xs uppercase tracking-[0.2em] text-accent border border-accent/40 rounded-full px-4 py-1 mb-5">
+            Peşəkar Hüquqi Xidmət
+          </span>
+        </FadeUp>
+
         <FadeUp delay={0.1}>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
-            Hüquqlarınızı qorumaq üçün güclü hüquqi dəstək
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-white leading-snug mb-4">
+            Hüquqlarınızı{' '}
+            <span className="text-accent">qorumaq</span>{' '}
+            üçün güclü dəstək
           </h1>
         </FadeUp>
-        <FadeUp delay={0.25}>
-          <p className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed">
-            25 ildən artıq təcrübə ilə cinayət, mülki və ailə hüququ sahələrində etibarlı hüquqi həllər təqdim edirəm
+
+        {/* Subtitle — hidden on smallest screens */}
+        <FadeUp delay={0.2}>
+          <p className="hidden sm:block text-base md:text-lg text-white/70 mb-6 leading-relaxed">
+            25 ildən artıq təcrübə ilə cinayət, mülki və ailə hüququ sahələrində etibarlı hüquqi həllər
           </p>
         </FadeUp>
-        <FadeUp delay={0.35}>
-          <div className="flex gap-2 text-sm md:text-base text-accent mb-8 md:mb-10 flex-wrap justify-center md:justify-start">
-            <span>📞 +994 50 211 54 74</span>
-            <span className="hidden sm:inline">•</span>
-            <span className="hidden sm:inline">📧 ayazbay@huquqcu.com</span>
-            <span className="hidden sm:inline">•</span>
-            <span>✔ İlk konsultasiya mümkündür</span>
-          </div>
-          <div className="flex gap-3 flex-wrap justify-center md:justify-start">
-            <CtaButton className="px-6 md:px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
-              Pulsuz Konsultasiya Al
-            </CtaButton>
-            <Link href="/about" className="px-6 md:px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">
-              Mənim Haqqımda
-            </Link>
+
+        {/* Quick info pills */}
+        <FadeUp delay={0.3}>
+          <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-8">
+            {['25+ İl Təcrübə', '98% Uğur', 'Pulsuz Konsultasiya'].map(tag => (
+              <span key={tag} className="text-xs font-medium text-white/80 bg-white/10 border border-white/15 rounded-full px-3 py-1">
+                {tag}
+              </span>
+            ))}
           </div>
         </FadeUp>
+
+        {/* CTA buttons */}
+        <FadeUp delay={0.4}>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+            <CtaButton className="px-7 py-3.5 bg-accent text-black font-semibold hover:opacity-90 transition rounded text-sm">
+              Pulsuz Konsultasiya Al
+            </CtaButton>
+            <Link href="/about" className="px-7 py-3.5 border border-white/30 text-white font-medium hover:bg-white/10 transition rounded text-sm">
+              Haqqımda
+            </Link>
+          </div>
+
+          {/* Phone — always visible, compact */}
+          <a href="tel:+994502115474" className="inline-flex items-center gap-2 mt-5 text-sm text-white/60 hover:text-accent transition-colors">
+            <span className="text-accent">📞</span> +994 50 211 54 74
+          </a>
+        </FadeUp>
       </div>
+
       <SlideIn from="right" delay={0.2} className="relative hidden md:block h-[500px]">
         <Image src="/lawyer-profile.jpg" alt="Lawyer" fill className="object-cover rounded-xl shadow-[0_24px_80px_rgba(0,0,0,0.6)]" />
       </SlideIn>
