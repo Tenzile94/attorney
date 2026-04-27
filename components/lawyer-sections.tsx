@@ -24,42 +24,42 @@ const CtaButton = ({ children, className = '' }: { children: React.ReactNode; cl
 )
 
 export const HeroSection = () => (
-  <section className="relative h-screen min-h-[640px] flex items-center justify-between overflow-hidden">
+  <section className="relative min-h-screen flex items-center overflow-x-hidden">
     <div className="absolute inset-0 z-0">
       <Image src="/hero-bg.jpg" alt="Hero" fill className="object-cover opacity-40" />
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
     </div>
-    <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-16 items-center w-full">
-      <div>
+    <div className="relative z-10 max-w-7xl mx-auto px-4 pt-24 pb-16 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
+      <div className="text-center md:text-left">
         <FadeUp delay={0.1}>
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
             Hüquqlarınızı qorumaq üçün güclü hüquqi dəstək
           </h1>
         </FadeUp>
         <FadeUp delay={0.25}>
-          <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed">
             25 ildən artıq təcrübə ilə cinayət, mülki və ailə hüququ sahələrində etibarlı hüquqi həllər təqdim edirəm
           </p>
         </FadeUp>
         <FadeUp delay={0.35}>
-          <div className="flex gap-2 text-base text-accent mb-10 flex-wrap">
+          <div className="flex gap-2 text-sm md:text-base text-accent mb-8 md:mb-10 flex-wrap justify-center md:justify-start">
             <span>📞 +994 50 211 54 74</span>
-            <span>•</span>
-            <span>📧 ayazbay@huquqcu.com</span>
-            <span>•</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline">📧 ayazbay@huquqcu.com</span>
+            <span className="hidden sm:inline">•</span>
             <span>✔ İlk konsultasiya mümkündür</span>
           </div>
-          <div className="flex gap-4">
-            <CtaButton className="px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
+          <div className="flex gap-3 flex-wrap justify-center md:justify-start">
+            <CtaButton className="px-6 md:px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
               Pulsuz Konsultasiya Al
             </CtaButton>
-            <Link href="/about" className="px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">
+            <Link href="/about" className="px-6 md:px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">
               Mənim Haqqımda
             </Link>
           </div>
         </FadeUp>
       </div>
-      <SlideIn from="right" delay={0.2} className="relative h-96 md:h-[500px]">
+      <SlideIn from="right" delay={0.2} className="relative hidden md:block h-[500px]">
         <Image src="/lawyer-profile.jpg" alt="Lawyer" fill className="object-cover rounded-xl shadow-[0_24px_80px_rgba(0,0,0,0.6)]" />
       </SlideIn>
     </div>
