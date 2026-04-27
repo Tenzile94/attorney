@@ -349,6 +349,7 @@ const contactSchema = z.object({
   name: z.string().min(2, 'Ad ən az 2 simvol olmalıdır'),
   email: z.string().email('Düzgün e-mail ünvanı daxil edin'),
   phone: z.string().min(7, 'Telefon nömrəsi tələb olunur'),
+  whatsapp: z.string().optional(),
   subject: z.string().min(3, 'Mövzu tələb olunur'),
   message: z.string().min(10, 'Mesaj ən az 10 simvol olmalıdır'),
 })
@@ -457,9 +458,21 @@ export const ContactSection = () => {
                     {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone.message}</p>}
                   </div>
                 </div>
-                <div>
-                  <input {...register('email')} type="email" placeholder="E-mail *" className={inputClass(!!errors.email)} />
-                  {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <input {...register('email')} type="email" placeholder="E-mail *" className={inputClass(!!errors.email)} />
+                    {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
+                  </div>
+                  <div className="relative">
+                    <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5 pointer-events-none">
+                      <Image src="/whatsapp.svg" alt="WhatsApp" width={16} height={16} className="w-4 h-4 brightness-0 invert opacity-50" />
+                    </div>
+                    <input
+                      {...register('whatsapp')}
+                      placeholder="WhatsApp nömrəsi"
+                      className={`${inputClass(false)} pl-9`}
+                    />
+                  </div>
                 </div>
                 <div>
                   <input {...register('subject')} placeholder="Mövzu *" className={inputClass(!!errors.subject)} />

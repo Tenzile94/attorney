@@ -6,6 +6,7 @@ const contactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   phone: z.string().min(7),
+  whatsapp: z.string().optional(),
   subject: z.string().min(3),
   message: z.string().min(10),
 })
@@ -40,9 +41,13 @@ export async function POST(request: Request) {
               <td style="padding: 10px 0; color: #555; font-size: 14px; font-weight: bold;">Telefon:</td>
               <td style="padding: 10px 0; color: #222; font-size: 14px;">${data.phone}</td>
             </tr>
-            <tr style="background: #f0f0f0;">
-              <td style="padding: 10px 8px; color: #555; font-size: 14px; font-weight: bold;">Mövzu:</td>
-              <td style="padding: 10px 8px; color: #222; font-size: 14px;">${data.subject}</td>
+            ${data.whatsapp ? `<tr style="background: #f0f0f0;">
+              <td style="padding: 10px 8px; color: #555; font-size: 14px; font-weight: bold;">WhatsApp:</td>
+              <td style="padding: 10px 8px; font-size: 14px;"><a href="https://wa.me/${data.whatsapp.replace(/\D/g, '')}" style="color: #25d366; font-weight: bold;">${data.whatsapp}</a></td>
+            </tr>` : ''}
+            <tr>
+              <td style="padding: 10px 0; color: #555; font-size: 14px; font-weight: bold;">Mövzu:</td>
+              <td style="padding: 10px 0; color: #222; font-size: 14px;">${data.subject}</td>
             </tr>
           </table>
           <div style="margin-top: 24px;">
