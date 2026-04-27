@@ -31,7 +31,7 @@ export const HeroSection = () => (
       <div className="absolute inset-0 bg-background/60 md:bg-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
     </div>
-    <div className="relative z-10 max-w-7xl mx-auto px-5 pt-28 pb-14 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
+    <div className="relative z-10 max-w-7xl mx-auto px-5 pt-16 pb-14 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
       <div className="text-center md:text-left">
 
         {/* Badge — mobile only shows short label */}
