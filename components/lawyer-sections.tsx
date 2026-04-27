@@ -9,7 +9,7 @@ import { z } from 'zod'
 import { services } from '@/lib/services-data'
 import { FadeUp, SlideIn, StaggerList, StaggerItem } from '@/components/motion'
 
-const WA_LINK = 'https://wa.me/994512000000'
+const WA_LINK = 'https://wa.me/994502115474'
 
 /** Desktop → scroll to #contact  |  Mobile → WhatsApp */
 const CtaButton = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
@@ -43,7 +43,7 @@ export const HeroSection = () => (
         </FadeUp>
         <FadeUp delay={0.35}>
           <div className="flex gap-2 text-base text-accent mb-10 flex-wrap">
-            <span>📞 +994 12 496 66 66</span>
+            <span>📞 +994 50 211 54 74</span>
             <span>•</span>
             <span>📧 ayazbay@huquqcu.com</span>
             <span>•</span>
@@ -80,7 +80,7 @@ export const AboutSection = () => (
           <div>
             <p className="text-base text-accent mb-3 uppercase tracking-widest">Haqqımda</p>
             <h2 className="text-4xl font-serif font-bold mb-6 text-white">
-              Vəkil Ayazbay Ahmadov haqqında
+              Vəkil Kərimbəyli Abbas Yaqub oğlu haqqında
             </h2>
             <p className="text-base text-muted-foreground mb-4 leading-relaxed">
               25 ildən artıq peşəkar hüquqi təcrübəyə malik olaraq, müştərilərimin hüquqlarını qorumaq və onların problemlərinə effektiv həllər təqdim etmək əsas məqsədimdir.
@@ -417,7 +417,12 @@ export const ContactSection = () => {
                 </p>
               </div>
               {[
-                { icon: <Phone className="w-6 h-6 text-accent" />, label: 'Telefon', lines: ['+994 12 496 66 66', '+994 51 000 00 00'] },
+                { icon: <Phone className="w-6 h-6 text-accent" />, label: 'Telefon', lines: [
+                  <a key="wa" href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+                    +994 50 211 54 74
+                    <Image src="/whatsapp.svg" alt="WhatsApp" width={14} height={14} className="w-3.5 h-3.5 brightness-0 invert opacity-70" />
+                  </a>
+                ] as React.ReactNode[] },
                 { icon: <Mail className="w-6 h-6 text-accent" />, label: 'E-mail', lines: ['ayazbay@huquqcu.com'] },
                 { icon: <MapPin className="w-6 h-6 text-accent" />, label: 'Ünvan', lines: ['Bakı, Nəsimi rayonu, Aziz Ələkbərov küçəsi 201', 'Həmrəy-Ələkbərov Biznes Mərkəzi, 7-ci mərtəbə'] },
                 { icon: <Clock className="w-6 h-6 text-accent" />, label: 'İş Saatları', lines: ['Bazar ertəsi – Cümə: 09:00 – 18:00', 'Şənbə: 09:00 – 14:00'] },
@@ -428,8 +433,8 @@ export const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-accent text-base mb-1">{item.label}</p>
-                    {item.lines.map((l) => (
-                      <p key={l} className="text-white/70 text-base">{l}</p>
+                    {item.lines.map((l, idx) => (
+                      <div key={idx} className="text-white/70 text-base">{l}</div>
                     ))}
                   </div>
                 </div>
@@ -579,9 +584,10 @@ export const MapSection = () => {
             <MapPin className="w-4 h-4 text-accent" />
             47 Füzuli küçəsi, Fuzuli Residence, Bakı
           </a>
-          <a href="tel:+994124989595" className="flex items-center gap-2 hover:text-accent transition-colors">
+          <a href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
             <Phone className="w-4 h-4 text-accent" />
-            +994 12 498 95 95
+            +994 50 211 54 74
+            <Image src="/whatsapp.svg" alt="WhatsApp" width={13} height={13} className="w-3 h-3 brightness-0 invert opacity-60" />
           </a>
           <span className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-accent" />

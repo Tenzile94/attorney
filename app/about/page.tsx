@@ -21,7 +21,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="py-20 bg-primary/20">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-5xl font-serif font-bold mb-4 text-center">Vəkil Ayəzbay Ahmadov</h1>
+          <h1 className="text-5xl font-serif font-bold mb-4 text-center">Vəkil Kərimbəyli Abbas Yaqub oğlu</h1>
           <p className="text-center text-muted-foreground text-lg">25 ildən artıq peşəkar hüquqi xidmət</p>
         </div>
       </section>
@@ -33,7 +33,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-4xl font-serif font-bold mb-6 text-accent">Mən kimim?</h2>
               <div className="space-y-4 text-muted-foreground">
-                <p>Azərbaycanda 25 ildən artıq hüquqi xidmət sahəsində fəaliyyət göstərən peşəkar vəkil Ayəzbay Ahmadovdur.</p>
+                <p>Azərbaycanda 25 ildən artıq hüquqi xidmət sahəsində fəaliyyət göstərən peşəkar vəkil Kərimbəyli Abbas Yaqub oğludur.</p>
                 <p>1995-1999 yıllarında Bakı Dövlət Universitetinin Hüquq Fakültəsində Beynəlxalq Hüquq ixtisasını öyrənmişəm. Məyyit dərslərə əlavə olaraq, hüquq sahəsində müəssir nəticə almaq üçün praktik biliklərlə cəhizlənmişəm.</p>
                 <p>2010-cu ildə Azərbaycanda Hüquq Kolegiasından Fərdi Hüquq Kateqoriyasında vəkil sertifikatı almış və rəsmi olaraq qeydiyyatdan keçmişəm. Bu müsələmə məni müştərilərin tam hüquqi nümayəndəliyi etməyə səlahiyyət verir.</p>
                 <p>Hər yeni məsələ üzərində işləyərkən, qanunun mahiyyətini, etikanı və ən mühümü, müştərilərimizin mənafelərini yüksək tuturum. Bununla yanaşı, hüquq sisteminə fərdi töhfə vermək mənim böyük məqsədidir.</p>
@@ -138,7 +138,7 @@ export default function AboutPage() {
           <h2 className="text-4xl font-serif font-bold mb-6">Məyə Etibar Edin</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">Hüquqi məsələləriniz üzrə məsləhət almaq üçün indi müraciət edin. İlk konsultasiya pulsuz keçirilir.</p>
           <div className="flex gap-4 justify-center">
-            <a href="tel:+994124966666" className="px-8 py-3 bg-accent text-primary font-semibold hover:opacity-90 transition rounded">Telefon Etmə</a>
+            <a href="tel:+994502115474" className="px-8 py-3 bg-accent text-primary font-semibold hover:opacity-90 transition rounded">Telefon Etmə</a>
             <a href="mailto:ayazbay@huquqcu.com" className="px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">E-mail Yolla</a>
           </div>
         </div>
@@ -152,7 +152,10 @@ export default function AboutPage() {
               <Phone className="w-6 h-6 text-accent flex-shrink-0" />
               <div>
                 <p className="font-semibold text-accent mb-2">Telefon</p>
-                <p className="text-muted-foreground text-sm">+994 12 496 66 66</p>
+                <a href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground text-sm hover:text-accent transition-colors">
+                  +994 50 211 54 74
+                  <Image src="/whatsapp.svg" alt="WhatsApp" width={13} height={13} className="w-3 h-3 brightness-0 invert opacity-60" />
+                </a>
               </div>
             </div>
             <div className="flex gap-4">
@@ -183,7 +186,7 @@ export default function AboutPage() {
       {/* Footer */}
       <footer className="bg-card border-t border-border py-8">
         <div className="max-w-7xl mx-auto px-4 text-center text-muted-foreground text-sm">
-          <p>&copy; 2026  Vəkil Ayəzbay Ahmadov. Bütün hüquqlar qorunur.</p>
+          <p>&copy; 2026  Vəkil Kərimbəyli Abbas Yaqub oğlu. Bütün hüquqlar qorunur.</p>
         </div>
       </footer>
     </div>

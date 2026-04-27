@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = getServiceBySlug(slug)
   if (!service) return {}
   return {
-    title: `${service.title} | Vəkil Ayəzbay Ahmadov`,
+    title: `${service.title} | Vəkil Kərimbəyli Abbas Yaqub oğlu`,
     description: service.heroDesc,
   }
 }
@@ -31,7 +31,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <header className="sticky top-0 z-50 bg-primary/95 backdrop-blur border-b border-border/30">
         <div className="max-w-7xl mx-auto px-4">
           <div className="py-2 text-center text-xs text-accent border-b border-border/20">
-            📞 +994 12 496 66 66 • 📧 ayazbay@huquqcu.com
+            📞 +994 50 211 54 74 • 📧 ayazbay@huquqcu.com
           </div>
           <div className="py-4 flex items-center justify-between">
             <a href="/" className="text-2xl font-serif font-bold text-accent">VA</a>
@@ -86,7 +86,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 Pulsuz Məsləhət Al <ArrowRight className="w-4 h-4" />
               </a>
               <a
-                href="tel:+994124966666"
+                href="tel:+994502115474"
                 className="inline-flex items-center gap-2 px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded"
               >
                 📞 Zəng Et
@@ -154,11 +154,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <h3 className="font-serif font-bold text-xl mb-2">Məsləhət Alın</h3>
                 <p className="text-muted-foreground text-sm mb-6">Bu xidmət haqqında ilk məsləhətiniz pulsuz</p>
                 <div className="space-y-3 mb-6">
-                  <a href="tel:+994124966666" className="flex items-center gap-3 text-sm hover:text-accent transition">
+                  <a href="tel:+994502115474" className="flex items-center gap-3 text-sm hover:text-accent transition">
                     <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                       <Phone className="w-4 h-4 text-accent" />
                     </div>
-                    +994 12 496 66 66
+                    +994 50 211 54 74
                   </a>
                   <a href="mailto:ayazbay@huquqcu.com" className="flex items-center gap-3 text-sm hover:text-accent transition">
                     <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -219,8 +219,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <a href="/#contact" className="px-8 py-3 bg-accent text-primary font-semibold hover:opacity-90 transition rounded inline-flex items-center gap-2">
               Pulsuz Konsultasiya Al <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="tel:+994124966666" className="px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">
-              +994 12 496 66 66
+            <a href="tel:+994502115474" className="px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">
+              +994 50 211 54 74
             </a>
           </div>
         </div>
@@ -237,7 +237,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div>
               <h4 className="font-semibold text-accent mb-3">Əlaqə</h4>
               <div className="space-y-2 text-muted-foreground text-sm">
-                <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-accent" /> +994 12 496 66 66</p>
+                <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-accent" /> +994 50 211 54 74</p>
                 <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-accent" /> ayazbay@huquqcu.com</p>
                 <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> Bakı, Aziz Ələkbərov 201</p>
               </div>
@@ -254,7 +254,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
           <div className="border-t border-border pt-6 text-center text-muted-foreground text-sm">
-            <p>© 2026  Vəkil Ayəzbay Ahmadov. Bütün hüquqlar qorunur.</p>
+            <p>© 2026  Vəkil Kərimbəyli Abbas Yaqub oğlu. Bütün hüquqlar qorunur.</p>
           </div>
         </div>
       </footer>

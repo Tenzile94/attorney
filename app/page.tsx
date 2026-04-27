@@ -7,7 +7,7 @@ import SiteHeader from '@/components/site-header'
 
 export default function Home() {
   const testimonials = [
-    { name: 'Rəfael Quliyev', role: 'Sahibkar', text: 'Ayəzbay Ahmadov müəssisəmin hüquqi məsələlərində dəqiqliyi və peşəkarlığı göstərdi.' },
+    { name: 'Rəfael Quliyev', role: 'Sahibkar', text: 'Kərimbəyli Abbas müəssisəmin hüquqi məsələlərində dəqiqliyi və peşəkarlığı göstərdi.' },
     { name: 'Nazim Həsənov', role: 'Biznesmen', text: 'Çox çətin kontraktı uğurla həll etdi. Məişət və peşəkarlığı özündə toplayır.' },
     { name: 'Fatimə Səfərova', role: 'Müdirə', text: 'Ailə məsələlərində hakim olmaq, ədalətli nəticə əldə etmişdi.' },
   ]
@@ -17,7 +17,7 @@ export default function Home() {
       {/* Sticky Social Icons */}
       <div className="fixed right-0 top-1/3 z-40 flex flex-col gap-3 pr-4">
         {[
-          { href: 'https://wa.me/994512000000',  file: 'whatsapp',  label: 'WhatsApp' },
+          { href: 'https://wa.me/994502115474',  file: 'whatsapp',  label: 'WhatsApp' },
           { href: 'https://facebook.com',         file: 'facebook',  label: 'Facebook' },
           { href: 'https://t.me',                 file: 'telegram',  label: 'Telegram' },
           { href: 'https://instagram.com',        file: 'instagram', label: 'Instagram' },
@@ -105,7 +105,7 @@ export default function Home() {
                   <span className="text-accent font-serif font-bold text-base leading-none">V</span>
                 </div>
                 <div>
-                  <div className="text-white font-serif font-bold text-sm leading-tight">Ayazbay Ahmadov</div>
+                  <div className="text-white font-serif font-bold text-sm leading-tight">Kərimbəyli Abbas</div>
                   <div className="text-accent text-[9px] uppercase tracking-[0.18em]">Vəkil • Hüquqçu</div>
                 </div>
               </div>
@@ -132,8 +132,8 @@ export default function Home() {
               <h4 className="font-semibold text-base text-white mb-5">Əlaqə</h4>
               <ul className="text-muted-foreground text-sm space-y-3">
                 <li>
-                  <a href="tel:+994124966666" className="hover:text-accent transition-colors flex items-start gap-2">
-                    <span className="text-accent mt-0.5">📞</span>+994 12 496 66 66
+                  <a href="tel:+994502115474" className="hover:text-accent transition-colors flex items-start gap-2">
+                    <span className="text-accent mt-0.5">📞</span>+994 50 211 54 74
                   </a>
                 </li>
                 <li>
@@ -158,7 +158,7 @@ export default function Home() {
                   { label: 'Facebook',  href: 'https://facebook.com',          file: 'facebook'  },
                   { label: 'Instagram', href: 'https://instagram.com',          file: 'instagram' },
                   { label: 'Telegram',  href: 'https://t.me',                   file: 'telegram'  },
-                  { label: 'WhatsApp',  href: 'https://wa.me/994512000000',     file: 'whatsapp'  },
+                  { label: 'WhatsApp',  href: 'https://wa.me/994502115474',     file: 'whatsapp'  },
                 ].map(s => (
                   <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-3 text-sm text-muted-foreground hover:text-accent transition-colors group">
@@ -209,7 +209,7 @@ export default function Home() {
         {/* Bottom copyright bar */}
         <div className="border-t border-white/[0.04] bg-background/40">
           <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
-            <p>&copy; 2026  Vəkil Ayazbay Ahmadov. Bütün hüquqlar qorunur.</p>
+            <p>&copy; 2026  Vəkil Kərimbəyli Abbas Yaqub oğlu. Bütün hüquqlar qorunur.</p>
             <div className="flex items-center gap-5">
                 <Link href="#" className="hover:text-accent transition-colors">Məxfilik Siyasəti</Link>
               <span className="text-white/10">|</span>

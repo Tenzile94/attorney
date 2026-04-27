@@ -7,7 +7,7 @@ const lora = Lora({ subsets: ['latin'], variable: '--font-lora' })
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Vəkil Ayəzbay Ahmadov | Hüquqi Xidmətlər',
+  title: 'Vəkil Kərimbəyli Abbas Yaqub oğlu | Hüquqi Xidmətlər',
   description: 'Azərbaycanda peşəkar hüquqi xidmətlər',
 }
 

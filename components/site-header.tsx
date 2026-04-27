@@ -22,11 +22,11 @@ export default function SiteHeader() {
       <div className="border-b border-white/[0.06] bg-background/40">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-xs text-muted-foreground">
           <div className="flex items-center gap-6">
-            <a href="tel:+994124966666" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+            <a href="tel:+994502115474" className="flex items-center gap-1.5 hover:text-accent transition-colors">
               <svg className="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
               </svg>
-              +994 12 496 66 66
+              +994 50 211 54 74
             </a>
             <a href="mailto:ayazbay@huquqcu.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
               <svg className="w-3 h-3 text-accent" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -54,7 +54,7 @@ export default function SiteHeader() {
               <span className="text-accent font-serif font-bold text-lg leading-none">V</span>
             </div>
             <div className="hidden sm:block">
-              <div className="text-white font-serif font-bold text-base leading-tight">Ayazbay Ahmadov</div>
+              <div className="text-white font-serif font-bold text-base leading-tight">Kərimbəyli Abbas</div>
               <div className="text-accent text-[10px] uppercase tracking-[0.2em] leading-tight">Vəkil • Hüquqçu</div>
             </div>
           </Link>
@@ -145,7 +145,7 @@ export default function SiteHeader() {
 
           {/* CTA */}
           <div className="flex items-center gap-3">
-            <a href="tel:+994124966666" className="hidden lg:flex items-center gap-2 px-4 py-2 border border-accent/40 text-accent text-sm font-medium rounded hover:bg-accent/10 transition-colors">
+            <a href="tel:+994502115474" className="hidden lg:flex items-center gap-2 px-4 py-2 border border-accent/40 text-accent text-sm font-medium rounded hover:bg-accent/10 transition-colors">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
               </svg>
@@ -230,11 +230,11 @@ export default function SiteHeader() {
             </div>
 
             <div className="pt-3 border-t border-white/[0.06] flex flex-col gap-2">
-              <a href="tel:+994124966666" className="flex items-center justify-center gap-2 py-3 border border-accent/40 text-accent text-sm font-medium rounded-lg hover:bg-accent/10 transition-colors">
+              <a href="tel:+994502115474" className="flex items-center justify-center gap-2 py-3 border border-accent/40 text-accent text-sm font-medium rounded-lg hover:bg-accent/10 transition-colors">
                 Zəng Et
               </a>
               <a
-                href="https://wa.me/994512000000"
+                href="https://wa.me/994502115474"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
