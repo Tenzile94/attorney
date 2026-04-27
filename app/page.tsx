@@ -44,9 +44,9 @@ export default function Home() {
               { value: '98%', label: 'Uğur Nisbəti' },
             ].map((stat, i) => (
               <StaggerItem key={i}>
-                <div className="py-7 px-6 text-center">
-                  <div className="text-3xl font-serif font-bold">{stat.value}</div>
-                  <div className="text-sm font-semibold uppercase tracking-widest mt-1 opacity-70">{stat.label}</div>
+                <div className="py-5 px-4 text-center md:py-7 md:px-6">
+                  <div className="text-xl  lg:text-2xl font-serif font-bold">{stat.value}</div>
+                  <div className="text-xs lg:text-sm font-semibold uppercase tracking-widest mt-1 opacity-70">{stat.label}</div>
                 </div>
               </StaggerItem>
             ))}
