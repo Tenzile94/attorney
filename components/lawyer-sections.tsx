@@ -503,30 +503,92 @@ export const ContactSection = () => {
   )
 }
 
-export const MapSection = () => (
-  <section className="bg-background">
-    <div className="max-w-7xl mx-auto px-4 pb-16">
-      <FadeUp className="text-center py-16">
-        <p className="text-base text-accent uppercase tracking-widest mb-3">Ünvanımız</p>
-        <h2 className="text-4xl font-serif font-bold text-white">Ofisimizi Tapın</h2>
-        <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
-      </FadeUp>
-      <div className="rounded-2xl overflow-hidden border border-white/[0.07] shadow-[0_20px_60px_rgba(0,0,0,0.5)]" style={{ height: '480px' }}>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.4850700000003!2d49.838!3d40.388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307e0e9a7b0001%3A0x400"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+export const MapSection = () => {
+  const [activeTab, setActiveTab] = useState<'map' | 'tour'>('map')
+
+  return (
+    <section className="bg-background">
+      <div className="max-w-7xl mx-auto px-4 pb-16">
+        <FadeUp className="text-center py-16">
+          <p className="text-base text-accent uppercase tracking-widest mb-3">Ünvanımız</p>
+          <h2 className="text-4xl font-serif font-bold text-white">Ofisimizi Tapın</h2>
+          <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
+        </FadeUp>
+
+        {/* Tab switcher */}
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex bg-card border border-white/[0.07] rounded-xl p-1 gap-1">
+            <button
+              onClick={() => setActiveTab('map')}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                activeTab === 'map'
+                  ? 'bg-accent text-black shadow'
+                  : 'text-muted-foreground hover:text-white'
+              }`}
+            >
+              <MapPin className="w-4 h-4" />
+              Xəritə
+            </button>
+            <button
+              onClick={() => setActiveTab('tour')}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                activeTab === 'tour'
+                  ? 'bg-accent text-black shadow'
+                  : 'text-muted-foreground hover:text-white'
+              }`}
+            >
+              <span className="text-base leading-none">360°</span>
+              Virtual Tur
+            </button>
+          </div>
+        </div>
+
+        {/* Panel */}
+        <div className="rounded-2xl overflow-hidden border border-white/[0.07] shadow-[0_20px_60px_rgba(0,0,0,0.5)]" style={{ height: '480px' }}>
+          {activeTab === 'map' ? (
+            <iframe
+              src="https://maps.google.com/maps?q=40.375759,49.837082&z=17&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          ) : (
+            <iframe
+              src="http://www.azerbaijan360.az/what-to-see/vekil-burolari/fides-v-kil-burosu-1/"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              title="Virtual Tur"
+            />
+          )}
+        </div>
+
+        {/* Info strip */}
+        <div className="mt-6 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+          <a
+            href="https://maps.app.goo.gl/MrmZxopm51esYh66A"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-accent transition-colors"
+          >
+            <MapPin className="w-4 h-4 text-accent" />
+            47 Füzuli küçəsi, Fuzuli Residence, Bakı
+          </a>
+          <a href="tel:+994124989595" className="flex items-center gap-2 hover:text-accent transition-colors">
+            <Phone className="w-4 h-4 text-accent" />
+            +994 12 498 95 95
+          </a>
+          <span className="flex items-center gap-2">
+            <Clock className="w-4 h-4 text-accent" />
+            B.e–Cümə: 09:00–18:00
+          </span>
+        </div>
       </div>
-      <div className="mt-6 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
-        <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> Bakı, Nəsimi rayonu, Aziz Ələkbərov küçəsi 201</span>
-        <span className="flex items-center gap-2"><Phone className="w-4 h-4 text-accent" /> +994 12 496 66 66</span>
-        <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-accent" /> B.e–Cümə: 09:00–18:00</span>
-      </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
