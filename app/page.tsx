@@ -4,13 +4,10 @@ import Link from 'next/link'
 import { HeroSection, AboutSection, ServicesSection, WhyChooseSection, PracticeSection, FAQSection, MapSection, ContactSection } from '@/components/lawyer-sections'
 import { FadeUp, StaggerList, StaggerItem } from '@/components/motion'
 import SiteHeader from '@/components/site-header'
+import { useLanguage } from '@/lib/i18n'
 
 export default function Home() {
-  const testimonials = [
-    { name: 'Rəfael Quliyev', role: 'Sahibkar', text: 'Kərimbəyli Abbas müəssisəmin hüquqi məsələlərində dəqiqliyi və peşəkarlığı göstərdi.' },
-    { name: 'Nazim Həsənov', role: 'Biznesmen', text: 'Çox çətin kontraktı uğurla həll etdi. Məişət və peşəkarlığı özündə toplayır.' },
-    { name: 'Fatimə Səfərova', role: 'Müdirə', text: 'Ailə məsələlərində hakim olmaq, ədalətli nəticə əldə etmişdi.' },
-  ]
+  const { t } = useLanguage()
 
   return (
     <div className="bg-background text-foreground">
@@ -37,15 +34,10 @@ export default function Home() {
       <section className="bg-gold-gradient text-black py-0">
         <div className="max-w-7xl mx-auto px-4">
           <StaggerList className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/15" baseDelay={0.1} staggerDelay={0.1}>
-            {[
-              { value: '25+', label: 'İl Təcrübə' },
-              { value: '500+', label: 'Məmnun Müştəri' },
-              { value: '8', label: 'Hüquq Sahəsi' },
-              { value: '98%', label: 'Uğur Nisbəti' },
-            ].map((stat, i) => (
+            {(t.stats as readonly { value: string; label: string }[]).map((stat, i) => (
               <StaggerItem key={i}>
                 <div className="py-5 px-4 text-center md:py-7 md:px-6">
-                  <div className="text-xl  lg:text-2xl font-serif font-bold">{stat.value}</div>
+                  <div className="text-xl lg:text-2xl font-serif font-bold">{stat.value}</div>
                   <div className="text-xs lg:text-sm font-semibold uppercase tracking-widest mt-1 opacity-70">{stat.label}</div>
                 </div>
               </StaggerItem>
@@ -62,15 +54,15 @@ export default function Home() {
       <section className="py-32 bg-background" id="testimonials">
         <div className="max-w-7xl mx-auto px-4">
           <FadeUp className="text-center mb-20">
-            <p className="text-base text-accent uppercase tracking-widest mb-3">Rəylər</p>
-            <h2 className="text-4xl font-serif font-bold text-white">Müştərilərin Rəyləri</h2>
+            <p className="text-base text-accent uppercase tracking-widest mb-3">{t.testimonials.label}</p>
+            <h2 className="text-4xl font-serif font-bold text-white">{t.testimonials.title}</h2>
           </FadeUp>
           <StaggerList className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((test, i) => (
+            {(t.testimonials.items as readonly { name: string; role: string; text: string }[]).map((test, i) => (
               <StaggerItem key={i}>
                 <div className="p-8 bg-card rounded-xl border border-white/[0.07] card-glow card-glow-hover transition-all duration-300 flex flex-col h-full">
                   <div className="text-accent text-xl mb-4 tracking-widest">★★★★★</div>
-                  <p className="text-muted-foreground text-base mb-6 italic leading-relaxed flex-1">"{test.text}"</p>
+                  <p className="text-muted-foreground text-base mb-6 italic leading-relaxed flex-1">&ldquo;{test.text}&rdquo;</p>
                   <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
                     <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold text-base">
                       {test.name[0]}
@@ -109,14 +101,12 @@ export default function Home() {
                   <div className="text-accent text-[9px] uppercase tracking-[0.18em]">Vəkil • Hüquqçu</div>
                 </div>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                25 ildən artıq hüquqi xidmət göstərən, Azərbaycan Vəkillər Kollegiyasının üzvü olan peşəkar vəkil.
-              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{t.footer.desc}</p>
             </div>
 
             {/* Services */}
             <div>
-              <h4 className="font-semibold text-base text-white mb-5">Xidmətlər</h4>
+              <h4 className="font-semibold text-base text-white mb-5">{t.footer.services}</h4>
               <ul className="text-muted-foreground text-sm space-y-3">
                 <li><Link href="/services/kommersiya-huququ" className="hover:text-accent transition-colors">Kommersiya Hüququ</Link></li>
                 <li><Link href="/services/cinayat-huququ" className="hover:text-accent transition-colors">Cinayət Hüququ</Link></li>
@@ -129,7 +119,7 @@ export default function Home() {
 
             {/* Contact */}
             <div>
-              <h4 className="font-semibold text-base text-white mb-5">Əlaqə</h4>
+              <h4 className="font-semibold text-base text-white mb-5">{t.footer.contact}</h4>
               <ul className="text-muted-foreground text-sm space-y-3">
                 <li>
                   <a href="tel:+994502115474" className="hover:text-accent transition-colors flex items-start gap-2">
@@ -145,14 +135,14 @@ export default function Home() {
                   <span className="text-accent mt-0.5">📍</span>Bakı, Aziz Ələkbərov 201
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-0.5">🕐</span>B.e–Cümə: 09:00–18:00
+                  <span className="text-accent mt-0.5">🕐</span>{t.nav.hours}
                 </li>
               </ul>
             </div>
 
             {/* Social */}
             <div>
-              <h4 className="font-semibold text-base text-white mb-5">Sosial Şəbəkə</h4>
+              <h4 className="font-semibold text-base text-white mb-5">{t.footer.social}</h4>
               <div className="flex flex-col gap-3">
                 {[
                   { label: 'Facebook',  href: 'https://facebook.com',          file: 'facebook'  },
@@ -175,7 +165,7 @@ export default function Home() {
           {/* Official organisations strip */}
           <div className="border-t border-white/[0.06] pt-10 pb-2">
             <p className="text-xs text-muted-foreground uppercase tracking-widest text-center mb-7">
-              Rəsmi Qurumlar və Üzv Olduğum Təşkilatlar
+              {t.footer.orgs}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               {[
@@ -191,14 +181,14 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={org.label}
-                  className=" flex items-center justify-center "
+                  className="flex items-center justify-center"
                 >
                   <Image
                     src={org.src}
                     alt={org.label}
                     width={110}
                     height={40}
-                    className="h-14 w-auto object-contain "
+                    className="h-14 w-auto object-contain"
                   />
                 </a>
               ))}
@@ -209,11 +199,11 @@ export default function Home() {
         {/* Bottom copyright bar */}
         <div className="border-t border-white/[0.04] bg-background/40">
           <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
-            <p>&copy; 2026  Vəkil Kərimbəyli Abbas Yaqub oğlu. Bütün hüquqlar qorunur.</p>
+            <p>&copy; 2026 {t.footer.copyright}</p>
             <div className="flex items-center gap-5">
-                <Link href="#" className="hover:text-accent transition-colors">Məxfilik Siyasəti</Link>
+              <Link href="#" className="hover:text-accent transition-colors">{t.footer.privacy}</Link>
               <span className="text-white/10">|</span>
-              <Link href="#" className="hover:text-accent transition-colors">İstifadə Şərtləri</Link>
+              <Link href="#" className="hover:text-accent transition-colors">{t.footer.terms}</Link>
             </div>
           </div>
         </div>

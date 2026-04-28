@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Lora, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { LanguageProvider } from '@/lib/i18n'
 import './globals.css'
 
 const lora = Lora({ subsets: ['latin'], variable: '--font-lora' })
@@ -15,7 +16,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="az" className={`${lora.variable} ${inter.variable}`}>
       <body className="font-sans antialiased bg-background text-foreground">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

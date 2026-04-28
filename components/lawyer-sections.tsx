@@ -2,12 +2,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { MapPin, Phone, Mail, Clock, Plus, Minus, Zap, Handshake, Lock, Scale, ArrowRight, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { services } from '@/lib/services-data'
 import { FadeUp, SlideIn, StaggerList, StaggerItem } from '@/components/motion'
+import { useLanguage } from '@/lib/i18n'
 
 const WA_LINK = 'https://wa.me/994502115474'
 
@@ -23,265 +24,226 @@ const CtaButton = ({ children, className = '' }: { children: React.ReactNode; cl
   </>
 )
 
-export const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center overflow-x-hidden">
-    <div className="absolute inset-0 z-0">
-      <Image src="/hero-bg.jpg" alt="Hero" fill className="object-cover opacity-40" />
-      {/* stronger dark overlay on mobile for readability */}
-      <div className="absolute inset-0 bg-background/60 md:bg-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
-    </div>
-    <div className="relative z-10 max-w-7xl mx-auto px-5 pt-16 pb-14 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
-      <div className="text-center md:text-left">
-
-        {/* Badge — mobile only shows short label */}
-        <FadeUp delay={0.05}>
-          <span className="inline-block text-xs uppercase tracking-[0.2em] text-accent border border-accent/40 rounded-full px-4 py-1 mb-5">
-            Peşəkar Hüquqi Xidmət
-          </span>
-        </FadeUp>
-
-        <FadeUp delay={0.1}>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-white leading-snug mb-4">
-            Hüquqlarınızı{' '}
-            <span className="text-accent">qorumaq</span>{' '}
-            üçün güclü dəstək
-          </h1>
-        </FadeUp>
-
-        {/* Subtitle — hidden on smallest screens */}
-        <FadeUp delay={0.2}>
-          <p className="hidden sm:block text-base md:text-lg text-white/70 mb-6 leading-relaxed">
-            25 ildən artıq təcrübə ilə cinayət, mülki və ailə hüququ sahələrində etibarlı hüquqi həllər
-          </p>
-        </FadeUp>
-
-        {/* Quick info pills */}
-        <FadeUp delay={0.3}>
-          <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-8">
-            {['25+ İl Təcrübə', '98% Uğur', 'Pulsuz Konsultasiya'].map(tag => (
-              <span key={tag} className="text-xs font-medium text-white/80 bg-white/10 border border-white/15 rounded-full px-3 py-1">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </FadeUp>
-
-        {/* CTA buttons */}
-        <FadeUp delay={0.4}>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-            <CtaButton className="px-7 py-3.5 bg-accent text-black font-semibold hover:opacity-90 transition rounded text-sm">
-              Pulsuz Konsultasiya Al
-            </CtaButton>
-            <Link href="/about" className="px-7 py-3.5 border border-white/30 text-white font-medium hover:bg-white/10 transition rounded text-sm">
-              Haqqımda
-            </Link>
-          </div>
-
-          {/* Phone — always visible, compact */}
-          <a href="tel:+994502115474" className="inline-flex items-center gap-2 mt-5 text-sm text-white/60 hover:text-accent transition-colors">
-            <span className="text-accent">📞</span> +994 50 211 54 74
-          </a>
-        </FadeUp>
+export const HeroSection = () => {
+  const { t } = useLanguage()
+  return (
+    <section className="relative min-h-screen flex items-center overflow-x-hidden">
+      <div className="absolute inset-0 z-0">
+        <Image src="/hero-bg.jpg" alt="Hero" fill className="object-cover opacity-40" />
+        <div className="absolute inset-0 bg-background/60 md:bg-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
       </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-5 pt-16 pb-14 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
+        <div className="text-center md:text-left">
 
-      <SlideIn from="right" delay={0.2} className="relative hidden md:block h-[500px]">
-        <Image src="/lawyer-profile.jpg" alt="Lawyer" fill className="object-cover rounded-xl shadow-[0_24px_80px_rgba(0,0,0,0.6)]" />
-      </SlideIn>
-    </div>
-  </section>
-)
+          <FadeUp delay={0.05}>
+            <span className="inline-block text-xs uppercase tracking-[0.2em] text-accent border border-accent/40 rounded-full px-4 py-1 mb-5">
+              {t.hero.badge}
+            </span>
+          </FadeUp>
 
-export const AboutSection = () => (
-  <section className="py-32 bg-card" id="about">
-    <div className="max-w-7xl mx-auto px-4">
-      <div className="grid md:grid-cols-2 gap-16 items-center">
-        <SlideIn from="left">
-          <div className="relative rounded-xl overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.6)]">
-            <Image src="/lawyer-profile.jpg" alt="About" width={400} height={500} className="w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-          </div>
-        </SlideIn>
-        <SlideIn from="right" delay={0.1}>
-          <div>
-            <p className="text-base text-accent mb-3 uppercase tracking-widest">Haqqımda</p>
-            <h2 className="text-4xl font-serif font-bold mb-6 text-white">
-              Vəkil Kərimbəyli Abbas Yaqub oğlu haqqında
-            </h2>
-            <p className="text-base text-muted-foreground mb-4 leading-relaxed">
-              25 ildən artıq peşəkar hüquqi təcrübəyə malik olaraq, müştərilərimin hüquqlarını qorumaq və onların problemlərinə effektiv həllər təqdim etmək əsas məqsədimdir.
+          <FadeUp delay={0.1}>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-white leading-snug mb-4">
+              {t.hero.titlePre}
+              <span className="text-accent">{t.hero.titleAccent}</span>
+              {t.hero.titlePost}
+            </h1>
+          </FadeUp>
+
+          <FadeUp delay={0.2}>
+            <p className="hidden sm:block text-base md:text-lg text-white/70 mb-6 leading-relaxed">
+              {t.hero.subtitle}
             </p>
-            <p className="text-base text-muted-foreground mb-4 leading-relaxed">
-              Fəaliyyətim ərzində cinayət, mülki və ailə hüququ sahələrində yüzlərlə iş üzrə uğurlu nəticələr əldə etmişəm. Azərbaycan Respublikasının Vəkillər Kollegiyasının üzvü olaraq rəsmi fəaliyyət göstərirəm.
-            </p>
-            <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-              Mənim yanaşmam yalnız hüquqi biliklərlə deyil, eyni zamanda məsuliyyət, etika və hər bir müştəriyə fərdi diqqət prinsipləri ilə formalaşır.
-            </p>
-            <div className="space-y-4 mb-10">
-              {['24 saat ərzində operativ cavab', 'İlk konsultasiya imkanı', 'Məhkəmə işlərində yüksək uğur göstəricisi'].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-accent text-sm">✔</span>
-                  </div>
-                  <span className="text-base">{item}</span>
-                </div>
+          </FadeUp>
+
+          <FadeUp delay={0.3}>
+            <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-8">
+              {t.hero.pills.map((tag: string) => (
+                <span key={tag} className="text-xs font-medium text-white/80 bg-white/10 border border-white/15 rounded-full px-3 py-1">
+                  {tag}
+                </span>
               ))}
             </div>
-            <Link href="/about" className="inline-block px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
-              Haqqımda Ətraflı
-            </Link>
-          </div>
+          </FadeUp>
+
+          <FadeUp delay={0.4}>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+              <CtaButton className="px-7 py-3.5 bg-accent text-black font-semibold hover:opacity-90 transition rounded text-sm">
+                {t.hero.cta}
+              </CtaButton>
+              <Link href="/about" className="px-7 py-3.5 border border-white/30 text-white font-medium hover:bg-white/10 transition rounded text-sm">
+                {t.hero.about}
+              </Link>
+            </div>
+
+            <a href="tel:+994502115474" className="inline-flex items-center gap-2 mt-5 text-sm text-white/60 hover:text-accent transition-colors">
+              <span className="text-accent">📞</span> +994 50 211 54 74
+            </a>
+          </FadeUp>
+        </div>
+
+        <SlideIn from="right" delay={0.2} className="relative hidden md:block h-[500px]">
+          <Image src="/lawyer-profile.jpg" alt="Lawyer" fill className="object-cover rounded-xl shadow-[0_24px_80px_rgba(0,0,0,0.6)]" />
         </SlideIn>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
-export const ServicesSection = () => (
-  <section className="py-32 bg-background" id="services">
-    <div className="max-w-7xl mx-auto px-4">
-      <FadeUp className="text-center mb-20">
-        <p className="text-base text-accent uppercase tracking-widest mb-3">Xidmətlərim</p>
-        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-white">Hüquqi Xidmətlər</h2>
-        <p className="text-muted-foreground max-w-xl mx-auto text-base">
-          25 ildən artıq təcrübə ilə hüququn müxtəlif sahələrində peşəkar xidmət göstərirəm
-        </p>
-        <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
-      </FadeUp>
+export const AboutSection = () => {
+  const { t } = useLanguage()
+  return (
+    <section className="py-32 bg-card" id="about">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <SlideIn from="left">
+            <div className="relative rounded-xl overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.6)]">
+              <Image src="/lawyer-profile.jpg" alt="About" width={400} height={500} className="w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            </div>
+          </SlideIn>
+          <SlideIn from="right" delay={0.1}>
+            <div>
+              <p className="text-base text-accent mb-3 uppercase tracking-widest">{t.about.label}</p>
+              <h2 className="text-4xl font-serif font-bold mb-6 text-white">
+                {t.about.title}
+              </h2>
+              <p className="text-base text-muted-foreground mb-4 leading-relaxed">{t.about.p1}</p>
+              <p className="text-base text-muted-foreground mb-4 leading-relaxed">{t.about.p2}</p>
+              <p className="text-base text-muted-foreground mb-8 leading-relaxed">{t.about.p3}</p>
+              <div className="space-y-4 mb-10">
+                {(t.about.bullets as readonly string[]).map((item: string) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-accent text-sm">✔</span>
+                    </div>
+                    <span className="text-base">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <Link href="/about" className="inline-block px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
+                {t.about.btn}
+              </Link>
+            </div>
+          </SlideIn>
+        </div>
+      </div>
+    </section>
+  )
+}
 
-      <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((svc) => (
-          <StaggerItem key={svc.slug}>
-            <Link
-              href={`/services/${svc.slug}`}
-              className="group relative flex flex-col bg-card border border-white/[0.07] rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(188,152,68,0.15)]"
-            >
-              {/* Top gold bar that expands on hover */}
-              <div className="h-[2px] bg-gradient-to-r from-transparent via-accent/60 to-transparent group-hover:via-accent transition-all duration-300" />
+export const ServicesSection = () => {
+  const { t } = useLanguage()
+  return (
+    <section className="py-32 bg-background" id="services">
+      <div className="max-w-7xl mx-auto px-4">
+        <FadeUp className="text-center mb-20">
+          <p className="text-base text-accent uppercase tracking-widest mb-3">{t.services.label}</p>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-white">{t.services.title}</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto text-base">{t.services.subtitle}</p>
+          <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
+        </FadeUp>
 
-              <div className="flex flex-col items-start p-8 h-full">
-                {/* Icon container */}
-                <div className="w-16 h-16 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-7 group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-300 flex-shrink-0">
-                  <div className="relative w-8 h-8">
-                    <Image
-                      src={`/services/${svc.iconFile}.svg`}
-                      alt={svc.title}
-                      fill
-                      className="object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                    />
+        <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((svc) => (
+            <StaggerItem key={svc.slug}>
+              <Link
+                href={`/services/${svc.slug}`}
+                className="group relative flex flex-col bg-card border border-white/[0.07] rounded-2xl overflow-hidden h-full transition-all duration-300 hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(188,152,68,0.15)]"
+              >
+                <div className="h-[2px] bg-gradient-to-r from-transparent via-accent/60 to-transparent group-hover:via-accent transition-all duration-300" />
+
+                <div className="flex flex-col items-start p-8 h-full">
+                  <div className="w-16 h-16 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-7 group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-300 flex-shrink-0">
+                    <div className="relative w-8 h-8">
+                      <Image
+                        src={`/services/${svc.iconFile}.svg`}
+                        alt={svc.title}
+                        fill
+                        className="object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                      />
+                    </div>
+                  </div>
+
+                  <h3 className="font-serif font-bold text-xl text-white mb-3 leading-snug group-hover:text-accent transition-colors duration-300">
+                    {svc.title}
+                  </h3>
+
+                  <div className="w-8 h-px bg-accent/40 mb-4 group-hover:w-14 transition-all duration-500" />
+
+                  <p className="text-muted-foreground text-base leading-relaxed flex-1">
+                    {svc.shortDesc}
+                  </p>
+
+                  <div className="mt-6 flex items-center gap-2 text-sm text-accent/60 group-hover:text-accent transition-colors duration-300">
+                    <span>{t.services.more}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </div>
+              </Link>
+            </StaggerItem>
+          ))}
+        </StaggerList>
 
-                {/* Title */}
-                <h3 className="font-serif font-bold text-xl text-white mb-3 leading-snug group-hover:text-accent transition-colors duration-300">
-                  {svc.title}
-                </h3>
-
-                {/* Divider */}
-                <div className="w-8 h-px bg-accent/40 mb-4 group-hover:w-14 transition-all duration-500" />
-
-                {/* Description */}
-                <p className="text-muted-foreground text-base leading-relaxed flex-1">
-                  {svc.shortDesc}
-                </p>
-
-                {/* Read more indicator */}
-                <div className="mt-6 flex items-center gap-2 text-sm text-accent/60 group-hover:text-accent transition-colors duration-300">
-                  <span>Ətraflı</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
-              </div>
-            </Link>
-          </StaggerItem>
-        ))}
-      </StaggerList>
-
-      <FadeUp delay={0.3} className="mt-16 text-center">
-        <p className="text-muted-foreground text-base mb-4">Xidmətlər haqqında sualınız var?</p>
-        <CtaButton className="px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
-          Pulsuz Məsləhət Al <ArrowRight className="w-4 h-4" />
-        </CtaButton>
-      </FadeUp>
-    </div>
-  </section>
-)
+        <FadeUp delay={0.3} className="mt-16 text-center">
+          <p className="text-muted-foreground text-base mb-4">{t.services.question}</p>
+          <CtaButton className="px-8 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
+            {t.services.cta} <ArrowRight className="w-4 h-4" />
+          </CtaButton>
+        </FadeUp>
+      </div>
+    </section>
+  )
+}
 
 export const WhyChooseSection = () => {
-  const reasons = [
-    {
-      icon: <Zap className="w-8 h-8 text-accent" />,
-      title: 'Sürətli Cavab',
-      desc: '24 saat ərzində cavab verilir. Təcili hallarda dərhal əlaqə.',
-    },
-    {
-      icon: <Handshake className="w-8 h-8 text-accent" />,
-      title: 'Fərdi Yanaşma',
-      desc: 'Hər müştərinin işi unikal qiymətləndirilir. Şablona uyğun deyil, sizin üçün strategiya hazırlanır.',
-    },
-    {
-      icon: <Lock className="w-8 h-8 text-accent" />,
-      title: 'Tam Məxfilik',
-      desc: 'Vəkil-müştəri sirri qanunla qorunur. Məlumatlarınız heç vaxt üçüncü şəxslərə verilmir.',
-    },
-    {
-      icon: <Scale className="w-8 h-8 text-accent" />,
-      title: 'Təcrübəli Məhkəmə Müdafiəsi',
-      desc: '25 ildən artıq məhkəmə zalında təcrübə. Mürəkkəb davalarda güclü hüquqi müdafiə.',
-    },
+  const { t } = useLanguage()
+
+  const icons = [
+    <Zap className="w-8 h-8 text-accent" key="zap" />,
+    <Handshake className="w-8 h-8 text-accent" key="handshake" />,
+    <Lock className="w-8 h-8 text-accent" key="lock" />,
+    <Scale className="w-8 h-8 text-accent" key="scale" />,
   ]
 
   return (
     <section className="py-32 relative overflow-hidden">
-      {/* Background image */}
-      <Image
-        src="/office-interior.jpg"
-        alt="Office interior"
-        fill
-        className="object-cover object-center"
-      />
-      {/* Gradient overlay — dark navy bottom-heavy */}
+      <Image src="/office-interior.jpg" alt="Office interior" fill className="object-cover object-center" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background/95" />
       <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
 
       <div className="relative max-w-7xl mx-auto px-4">
-        {/* Heading */}
         <FadeUp className="text-center mb-20">
-          <p className="text-base text-accent uppercase tracking-widest mb-3">Üstünlüklərim</p>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-white">Niyə Məni Seçməlisiniz?</h2>
+          <p className="text-base text-accent uppercase tracking-widest mb-3">{t.why.label}</p>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-white">{t.why.title}</h2>
           <div className="w-16 h-0.5 bg-accent mx-auto" />
         </FadeUp>
 
-        {/* Reasons — no boxes, open layout */}
         <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
-          {reasons.map((item, i) => (
+          {(t.why.reasons as readonly { title: string; desc: string }[]).map((item, i) => (
             <StaggerItem key={i}>
               <div className="flex flex-col items-center text-center">
-                {/* Icon */}
                 <div className="w-16 h-16 rounded-full border border-accent/30 flex items-center justify-center mb-5">
-                  {item.icon}
+                  {icons[i]}
                 </div>
-                {/* Gold divider */}
                 <div className="w-8 h-px bg-accent/50 mb-4" />
-                {/* Title */}
                 <h3 className="font-serif font-bold text-xl text-white mb-3">{item.title}</h3>
-                {/* Desc */}
                 <p className="text-muted-foreground text-base leading-relaxed">{item.desc}</p>
               </div>
             </StaggerItem>
           ))}
         </StaggerList>
 
-        {/* CTA */}
         <FadeUp delay={0.3} className="mt-24 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 pt-12">
           <div>
-            <p className="font-serif font-bold text-2xl text-white mb-1">Hüquqi probleminizi gecikdirməyin</p>
-            <p className="text-muted-foreground text-base">Bu gün müraciət edin və ilkin konsultasiya əldə edin.</p>
+            <p className="font-serif font-bold text-2xl text-white mb-1">{t.why.ctaTitle}</p>
+            <p className="text-muted-foreground text-base">{t.why.ctaSub}</p>
           </div>
           <div className="flex flex-col items-center gap-2 flex-shrink-0">
             <CtaButton className="px-10 py-3 bg-accent text-black font-semibold hover:opacity-90 transition rounded">
-              Pulsuz Konsultasiya Al
+              {t.why.ctaBtn}
             </CtaButton>
-            <p className="text-xs text-muted-foreground">✔ Məxfi • ✔ Öhdəliksiz • ✔ Sürətli cavab</p>
+            <p className="text-xs text-muted-foreground">{t.why.ctaNote}</p>
           </div>
         </FadeUp>
       </div>
@@ -289,67 +251,56 @@ export const WhyChooseSection = () => {
   )
 }
 
-export const PracticeSection = () => (
-  <section className="py-32 bg-background">
-    <div className="max-w-7xl mx-auto px-4">
-      <FadeUp><h2 className="text-4xl font-serif font-bold text-center mb-20 text-white">Təcrübə Sahələri</h2></FadeUp>
+export const PracticeSection = () => {
+  const { t } = useLanguage()
+  return (
+    <section className="py-32 bg-background">
+      <div className="max-w-7xl mx-auto px-4">
+        <FadeUp><h2 className="text-4xl font-serif font-bold text-center mb-20 text-white">{t.practice.title}</h2></FadeUp>
 
-      <div className="mb-16">
-        <h3 className="text-2xl font-serif font-bold mb-8 text-accent">Tədris Yeri</h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          {[
-            { icon: '🎓', title: 'Bakı Dövlət Universiteti', sub: 'Hüquq Fakültəsi, 1995-1999', desc: 'Beynəlxalq Hüquq ixtisasını öyrəndim' },
-            { icon: '📚', title: 'Hüquq Kolegiası', sub: 'Vəkil Sertifikası, 2010', desc: 'Fərdi Hüquq Kateqoriyası müsələmə' },
-          ].map((item, i) => (
-            <div key={i} className="p-8 bg-card border border-white/[0.07] card-glow rounded-xl flex items-start gap-4">
-              <div className="text-3xl">{item.icon}</div>
-              <div>
-                <h4 className="font-semibold text-xl mb-1 text-white">{item.title}</h4>
-                <p className="text-accent text-base mb-1">{item.sub}</p>
-                <p className="text-muted-foreground text-base">{item.desc}</p>
+        <div className="mb-16">
+          <h3 className="text-2xl font-serif font-bold mb-8 text-accent">{t.practice.eduTitle}</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {(t.practice.education as readonly { icon: string; title: string; sub: string; desc: string }[]).map((item, i) => (
+              <div key={i} className="p-8 bg-card border border-white/[0.07] card-glow rounded-xl flex items-start gap-4">
+                <div className="text-3xl">{item.icon}</div>
+                <div>
+                  <h4 className="font-semibold text-xl mb-1 text-white">{item.title}</h4>
+                  <p className="text-accent text-base mb-1">{item.sub}</p>
+                  <p className="text-muted-foreground text-base">{item.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div>
-        <h3 className="text-2xl font-serif font-bold mb-8 text-accent">İşlədiyi Yerlər</h3>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { year: '1999–2005', place: 'Gənc Vəkillərin Assosiasiyası', role: 'Junior Vəkil' },
-            { year: '2005–2010', place: 'Bakı Hüquq Şirkəti', role: 'Senior Vəkil' },
-            { year: '2010–İndiki', place: 'Fərdi Praktika', role: 'Sərbəst Vəkil' },
-          ].map((item, i) => (
-            <div key={i} className="p-6 bg-card border border-accent/20 card-glow rounded-xl">
-              <div className="text-accent font-semibold text-base mb-2">{item.year}</div>
-              <h4 className="font-semibold text-lg text-white mb-1">{item.place}</h4>
-              <p className="text-muted-foreground text-base">{item.role}</p>
-            </div>
-          ))}
+        <div>
+          <h3 className="text-2xl font-serif font-bold mb-8 text-accent">{t.practice.workTitle}</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {(t.practice.work as readonly { year: string; place: string; role: string }[]).map((item, i) => (
+              <div key={i} className="p-6 bg-card border border-accent/20 card-glow rounded-xl">
+                <div className="text-accent font-semibold text-base mb-2">{item.year}</div>
+                <h4 className="font-semibold text-lg text-white mb-1">{item.place}</h4>
+                <p className="text-muted-foreground text-base">{item.role}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 export const FAQSection = ({ id }: { id?: string } = {}) => {
   const [expanded, setExpanded] = useState<number | null>(null)
-
-  const faqs = [
-    { q: 'Ilk məsləhət necə olur?', a: 'Telefon, video yaxud şəxsən görüş üzrə ilk konsultasiya 30 dəqiqə ərzində pulsuz keçirilir.' },
-    { q: 'Honorar necə hesablanır?', a: 'Honorar məsələnin mürəkkəbliyinə, vaxt sərf etməsinə və nəticəsinə görə hesablanır.' },
-    { q: 'Davaya nə qədər vaxt tələ olur?', a: 'Sadə davalar 1-3 ay, mürəkkəb davalar 6-12 ay və daha çox vaxta tələ ola bilər.' },
-    { q: 'Gizlilik qorunur mu?', a: 'Bəli, vəkil-müştəri münasibətində tam gizlilik qanunla təmin edilir.' },
-    { q: 'Online xidmət göstərirsiniz?', a: 'Bəli, email, WhatsApp, Zoom üzərindən məsləhət və bəzi proseduralar keçirilə bilər.' },
-  ]
+  const { t } = useLanguage()
 
   return (
     <section className="py-32 bg-card" id={id}>
       <div className="max-w-3xl mx-auto px-4">
-        <FadeUp><h2 className="text-4xl font-serif font-bold text-center mb-20 text-white">Tez-tez Soruşulan Suallar</h2></FadeUp>
+        <FadeUp><h2 className="text-4xl font-serif font-bold text-center mb-20 text-white">{t.faq.title}</h2></FadeUp>
         <div className="space-y-3">
-          {faqs.map((faq, i) => (
+          {(t.faq.items as readonly { q: string; a: string }[]).map((faq, i) => (
             <div key={i} className="bg-background border border-white/[0.07] card-glow rounded-xl overflow-hidden">
               <button
                 onClick={() => setExpanded(expanded === i ? null : i)}
@@ -371,19 +322,27 @@ export const FAQSection = ({ id }: { id?: string } = {}) => {
   )
 }
 
-const contactSchema = z.object({
-  name: z.string().min(2, 'Ad ən az 2 simvol olmalıdır'),
-  email: z.string().email('Düzgün e-mail ünvanı daxil edin'),
-  phone: z.string().min(7, 'Telefon nömrəsi tələb olunur'),
-  whatsapp: z.string().optional(),
-  subject: z.string().min(3, 'Mövzu tələb olunur'),
-  message: z.string().min(10, 'Mesaj ən az 10 simvol olmalıdır'),
-})
-
-type ContactFormData = z.infer<typeof contactSchema>
+type ContactFormData = {
+  name: string
+  email: string
+  phone: string
+  whatsapp?: string
+  subject: string
+  message: string
+}
 
 export const ContactSection = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const { t } = useLanguage()
+
+  const contactSchema = useMemo(() => z.object({
+    name: z.string().min(2, t.contact.nameErr),
+    email: z.string().email(t.contact.emailErr),
+    phone: z.string().min(7, t.contact.phoneErr),
+    whatsapp: z.string().optional(),
+    subject: z.string().min(3, t.contact.subjectErr),
+    message: z.string().min(10, t.contact.messageErr),
+  }), [t])
 
   const {
     register,
@@ -416,21 +375,13 @@ export const ContactSection = () => {
 
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
-      {/* Background image */}
-      <Image
-        src="/consultation.jpg"
-        alt="Consultation"
-        fill
-        className="object-cover object-center"
-        priority={false}
-      />
-      {/* Gradient overlay */}
+      <Image src="/consultation.jpg" alt="Consultation" fill className="object-cover object-center" priority={false} />
       <div className="absolute inset-0" style={{ background: 'linear-gradient(rgba(0, 0, 0, 0.84), rgba(0,0,0,0.88))' }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <FadeUp className="text-center mb-16">
-          <p className="text-base text-accent uppercase tracking-widest mb-3">Əlaqə</p>
-          <h2 className="text-4xl font-serif font-bold text-white">Mənimlə  Əlaqə Saxlayın</h2>
+          <p className="text-base text-accent uppercase tracking-widest mb-3">{t.contact.label}</p>
+          <h2 className="text-4xl font-serif font-bold text-white">{t.contact.title}</h2>
           <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
         </FadeUp>
 
@@ -438,21 +389,21 @@ export const ContactSection = () => {
           {/* Left — contact info */}
           <SlideIn from="left">
             <div className="space-y-8">
-              <div>
-                <p className="text-white/70 text-base leading-relaxed mb-8">
-                  Hüquqi məsələniz üçün Mənimlə  əlaqə saxlayın. 24 saat ərzində cavab veririk.
-                </p>
-              </div>
+              <p className="text-white/70 text-base leading-relaxed">{t.contact.subtitle}</p>
               {[
-                { icon: <Phone className="w-6 h-6 text-accent" />, label: 'Telefon', lines: [
-                  <a key="wa" href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-                    +994 50 211 54 74
-                    <Image src="/whatsapp.svg" alt="WhatsApp" width={14} height={14} className="w-3.5 h-3.5 brightness-0 invert opacity-70" />
-                  </a>
-                ] as React.ReactNode[] },
-                { icon: <Mail className="w-6 h-6 text-accent" />, label: 'E-mail', lines: ['ayazbay@huquqcu.com'] },
-                { icon: <MapPin className="w-6 h-6 text-accent" />, label: 'Ünvan', lines: ['Bakı, Nəsimi rayonu, Aziz Ələkbərov küçəsi 201', 'Həmrəy-Ələkbərov Biznes Mərkəzi, 7-ci mərtəbə'] },
-                { icon: <Clock className="w-6 h-6 text-accent" />, label: 'İş Saatları', lines: ['Bazar ertəsi – Cümə: 09:00 – 18:00', 'Şənbə: 09:00 – 14:00'] },
+                {
+                  icon: <Phone className="w-6 h-6 text-accent" />,
+                  label: t.contact.phone,
+                  lines: [
+                    <a key="wa" href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+                      +994 50 211 54 74
+                      <Image src="/whatsapp.svg" alt="WhatsApp" width={14} height={14} className="w-3.5 h-3.5 brightness-0 invert opacity-70" />
+                    </a>
+                  ] as React.ReactNode[],
+                },
+                { icon: <Mail className="w-6 h-6 text-accent" />, label: t.contact.email, lines: ['ayazbay@huquqcu.com'] },
+                { icon: <MapPin className="w-6 h-6 text-accent" />, label: t.contact.address, lines: t.contact.addrLines as readonly string[] },
+                { icon: <Clock className="w-6 h-6 text-accent" />, label: t.contact.hours, lines: t.contact.hoursLines as readonly string[] },
               ].map((item) => (
                 <div key={item.label} className="flex gap-4">
                   <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
@@ -460,7 +411,7 @@ export const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-accent text-base mb-1">{item.label}</p>
-                    {item.lines.map((l, idx) => (
+                    {(item.lines as (string | React.ReactNode)[]).map((l, idx) => (
                       <div key={idx} className="text-white/70 text-base">{l}</div>
                     ))}
                   </div>
@@ -472,42 +423,38 @@ export const ContactSection = () => {
           {/* Right — contact form */}
           <SlideIn from="right" delay={0.1}>
             <div className="bg-black/40 backdrop-blur-md border border-white/[0.12] rounded-2xl p-8">
-              <h3 className="font-serif font-bold text-xl text-white mb-6">Mesaj Göndərin</h3>
+              <h3 className="font-serif font-bold text-xl text-white mb-6">{t.contact.formTitle}</h3>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <input {...register('name')} placeholder="Adınız *" className={inputClass(!!errors.name)} />
+                    <input {...register('name')} placeholder={t.contact.namePh} className={inputClass(!!errors.name)} />
                     {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
                   </div>
                   <div>
-                    <input {...register('phone')} placeholder="Telefon *" className={inputClass(!!errors.phone)} />
+                    <input {...register('phone')} placeholder={t.contact.phonePh} className={inputClass(!!errors.phone)} />
                     {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone.message}</p>}
                   </div>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <input {...register('email')} type="email" placeholder="E-mail *" className={inputClass(!!errors.email)} />
+                    <input {...register('email')} type="email" placeholder={t.contact.emailPh} className={inputClass(!!errors.email)} />
                     {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
                   </div>
                   <div className="relative">
                     <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5 pointer-events-none">
                       <Image src="/whatsapp.svg" alt="WhatsApp" width={16} height={16} className="w-4 h-4 brightness-0 invert opacity-50" />
                     </div>
-                    <input
-                      {...register('whatsapp')}
-                      placeholder="WhatsApp nömrəsi"
-                      className={`${inputClass(false)} pl-9`}
-                    />
+                    <input {...register('whatsapp')} placeholder={t.contact.waPh} className={`${inputClass(false)} pl-9`} />
                   </div>
                 </div>
                 <div>
-                  <input {...register('subject')} placeholder="Mövzu *" className={inputClass(!!errors.subject)} />
+                  <input {...register('subject')} placeholder={t.contact.subjectPh} className={inputClass(!!errors.subject)} />
                   {errors.subject && <p className="text-red-400 text-xs mt-1">{errors.subject.message}</p>}
                 </div>
                 <div>
                   <textarea
                     {...register('message')}
-                    placeholder="Mesajınız *"
+                    placeholder={t.contact.messagePh}
                     rows={5}
                     className={`${inputClass(!!errors.message)} resize-none`}
                   />
@@ -517,13 +464,13 @@ export const ContactSection = () => {
                 {submitStatus === 'success' && (
                   <div className="flex items-center gap-2 text-green-400 text-sm bg-green-400/10 border border-green-400/20 rounded-lg px-4 py-3">
                     <CheckCircle className="w-4 h-4 flex-shrink-0" />
-                    Mesajınız uğurla göndərildi. Tezliklə sizinlə əlaqə saxlayacağıq.
+                    {t.contact.success}
                   </div>
                 )}
                 {submitStatus === 'error' && (
                   <div className="flex items-center gap-2 text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-3">
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                    Göndərilmə zamanı xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.
+                    {t.contact.error}
                   </div>
                 )}
 
@@ -533,9 +480,9 @@ export const ContactSection = () => {
                   className="w-full px-6 py-3 bg-accent text-black font-semibold hover:opacity-90 disabled:opacity-60 transition rounded-lg flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
-                    <><Loader2 className="w-4 h-4 animate-spin" /> Göndərilir...</>
+                    <><Loader2 className="w-4 h-4 animate-spin" /> {t.contact.sending}</>
                   ) : (
-                    <>Göndər <ArrowRight className="w-4 h-4" /></>
+                    <>{t.contact.send} <ArrowRight className="w-4 h-4" /></>
                   )}
                 </button>
               </form>
@@ -549,13 +496,14 @@ export const ContactSection = () => {
 
 export const MapSection = () => {
   const [activeTab, setActiveTab] = useState<'map' | 'tour'>('map')
+  const { t } = useLanguage()
 
   return (
     <section className="bg-background">
       <div className="max-w-7xl mx-auto px-4 pb-16">
         <FadeUp className="text-center py-16">
-          <p className="text-base text-accent uppercase tracking-widest mb-3">Ünvanımız</p>
-          <h2 className="text-4xl font-serif font-bold text-white">Ofisimizi Tapın</h2>
+          <p className="text-base text-accent uppercase tracking-widest mb-3">{t.map.label}</p>
+          <h2 className="text-4xl font-serif font-bold text-white">{t.map.title}</h2>
           <div className="w-16 h-0.5 bg-accent mx-auto mt-6" />
         </FadeUp>
 
@@ -565,24 +513,20 @@ export const MapSection = () => {
             <button
               onClick={() => setActiveTab('map')}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                activeTab === 'map'
-                  ? 'bg-accent text-black shadow'
-                  : 'text-muted-foreground hover:text-white'
+                activeTab === 'map' ? 'bg-accent text-black shadow' : 'text-muted-foreground hover:text-white'
               }`}
             >
               <MapPin className="w-4 h-4" />
-              Xəritə
+              {t.map.mapTab}
             </button>
             <button
               onClick={() => setActiveTab('tour')}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                activeTab === 'tour'
-                  ? 'bg-accent text-black shadow'
-                  : 'text-muted-foreground hover:text-white'
+                activeTab === 'tour' ? 'bg-accent text-black shadow' : 'text-muted-foreground hover:text-white'
               }`}
             >
               <span className="text-base leading-none">360°</span>
-              Virtual Tur
+              {t.map.tourTab}
             </button>
           </div>
         </div>
@@ -607,7 +551,7 @@ export const MapSection = () => {
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
-              title="Virtual Tur"
+              title={t.map.tourTab}
             />
           )}
         </div>
@@ -621,7 +565,7 @@ export const MapSection = () => {
             className="flex items-center gap-2 hover:text-accent transition-colors"
           >
             <MapPin className="w-4 h-4 text-accent" />
-            47 Füzuli küçəsi, Fuzuli Residence, Bakı
+            {t.map.address}
           </a>
           <a href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
             <Phone className="w-4 h-4 text-accent" />
@@ -630,7 +574,7 @@ export const MapSection = () => {
           </a>
           <span className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-accent" />
-            B.e–Cümə: 09:00–18:00
+            {t.nav.hours}
           </span>
         </div>
       </div>
