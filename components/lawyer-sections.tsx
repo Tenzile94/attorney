@@ -511,6 +511,7 @@ export const MapSection = () => {
         <div className="flex justify-center mb-6">
           <div className="inline-flex bg-card border border-white/[0.07] rounded-xl p-1 gap-1">
             <button
+              type="button"
               onClick={() => setActiveTab('map')}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                 activeTab === 'map' ? 'bg-accent text-black shadow' : 'text-muted-foreground hover:text-white'
@@ -520,6 +521,7 @@ export const MapSection = () => {
               {t.map.mapTab}
             </button>
             <button
+              type="button"
               onClick={() => setActiveTab('tour')}
               className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                 activeTab === 'tour' ? 'bg-accent text-black shadow' : 'text-muted-foreground hover:text-white'
@@ -531,10 +533,11 @@ export const MapSection = () => {
           </div>
         </div>
 
-        {/* Panel */}
+        {/* Panel — key forces full unmount/remount when tab changes so the iframe reloads */}
         <div className="rounded-2xl overflow-hidden border border-white/[0.07] shadow-[0_20px_60px_rgba(0,0,0,0.5)]" style={{ height: '480px' }}>
           {activeTab === 'map' ? (
             <iframe
+              key="map"
               src="https://maps.google.com/maps?q=40.375759,49.837082&z=17&output=embed"
               width="100%"
               height="100%"
@@ -545,6 +548,7 @@ export const MapSection = () => {
             />
           ) : (
             <iframe
+              key="tour"
               src="http://www.azerbaijan360.az/what-to-see/vekil-burolari/fides-v-kil-burosu-1/"
               width="100%"
               height="100%"
