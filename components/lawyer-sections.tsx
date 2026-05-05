@@ -496,7 +496,7 @@ export const ContactSection = () => {
 
 export const MapSection = () => {
   const [activeTab, setActiveTab] = useState<'map' | 'tour'>('map')
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
 
   return (
     <section className="bg-background">
@@ -547,16 +547,29 @@ export const MapSection = () => {
               referrerPolicy="no-referrer-when-downgrade"
             />
           ) : (
-            <iframe
-              key="tour"
-              src="http://www.azerbaijan360.az/what-to-see/vekil-burolari/fides-v-kil-burosu-1/"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              title={t.map.tourTab}
-            />
+            <div key="tour" className="w-full h-full flex flex-col items-center justify-center gap-6 bg-gradient-to-br from-card to-background px-8 text-center">
+              <div className="w-20 h-20 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center">
+                <span className="text-4xl leading-none">360°</span>
+              </div>
+              <div>
+                <p className="text-white font-serif font-bold text-2xl mb-2">{t.map.tourTab}</p>
+                <p className="text-muted-foreground text-sm max-w-xs mx-auto">
+                  {lang === 'en'
+                    ? 'The virtual tour opens in a new tab for the best experience.'
+                    : 'Virtual tur ən yaxşı təcrübə üçün yeni sekmədə açılır.'}
+                </p>
+              </div>
+              <a
+                href="http://www.azerbaijan360.az/what-to-see/vekil-burolari/fides-v-kil-burosu-1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-black font-semibold rounded hover:opacity-90 transition text-sm"
+              >
+                <span className="text-base leading-none">360°</span>
+                {t.map.tourTab}
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           )}
         </div>
 
