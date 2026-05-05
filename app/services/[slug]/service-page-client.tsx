@@ -134,11 +134,11 @@ export default function ServicePageClient({ service, otherServices }: Props) {
                     </div>
                     +994 50 211 54 74
                   </a>
-                  <a href="mailto:ayazbay@huquqcu.com" className="flex items-center gap-3 text-sm hover:text-accent transition">
+                  <a href="mailto:abbas.karimbayli@gmail.com" className="flex items-center gap-3 text-sm hover:text-accent transition">
                     <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                       <Mail className="w-4 h-4 text-accent" />
                     </div>
-                    ayazbay@huquqcu.com
+                    abbas.karimbayli@gmail.com
                   </a>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
                     <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -212,8 +212,8 @@ export default function ServicePageClient({ service, otherServices }: Props) {
               <h4 className="font-semibold text-accent mb-3">{t.footer.contact}</h4>
               <div className="space-y-2 text-muted-foreground text-sm">
                 <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-accent" /> +994 50 211 54 74</p>
-                <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-accent" /> ayazbay@huquqcu.com</p>
-                <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> Bakı, Aziz Ələkbərov 201</p>
+                <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-accent" /> abbas.karimbayli@gmail.com</p>
+                <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> Füzuli küçəsi 47, Fides Vəkil Bürosu</p>
               </div>
             </div>
             <div>

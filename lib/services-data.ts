@@ -25,7 +25,7 @@ export const services: Service[] = [
     iconFile: 'business',
     heroDesc: 'Biznesinizi hüquqi cəhətdən qorumaq üçün peşəkar kommersiya hüququ xidmətləri',
     fullDesc: [
-      'Kommersiya hüququ sahəsində 25 ildən artıq təcrübəmizlə şirkətlərə və sahibkarlara kompleks hüquqi dəstək göstəririk. Biznesdə hər addım hüquqi risklərlə müşayiət olunur — biz bu riskləri minimuma endiririk.',
+      'Kommersiya hüququ sahəsində 19 ildən artıq təcrübəmizlə şirkətlərə və sahibkarlara kompleks hüquqi dəstək göstəririk. Biznesdə hər addım hüquqi risklərlə müşayiət olunur — biz bu riskləri minimuma endiririk.',
       'Şirkətin qurulmasından tutmuş mürəkkəb kommersiya kontraktlarına qədər bütün mərhələlərdə yanınızdayıq. Hər müştəriyə fərdi yanaşma ilə biznesinizin spesifik ehtiyaclarına uyğun həllər hazırlayırıq.',
     ],
     whatWeOffer: [
@@ -123,7 +123,7 @@ export const services: Service[] = [
     },
   },
   {
-    slug: 'ailə-huququ',
+    slug: 'aile-huququ',
     title: 'Ailə Hüququ',
     shortDesc: 'Nikah, boşanma, uşaq hüquqları, miras və ailə münasibətlərinin tənzimlənməsi',
     iconFile: 'civil',

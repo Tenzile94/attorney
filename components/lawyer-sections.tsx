@@ -401,7 +401,7 @@ export const ContactSection = () => {
                     </a>
                   ] as React.ReactNode[],
                 },
-                { icon: <Mail className="w-6 h-6 text-accent" />, label: t.contact.email, lines: ['ayazbay@huquqcu.com'] },
+                { icon: <Mail className="w-6 h-6 text-accent" />, label: t.contact.email, lines: ['abbas.karimbayli@gmail.com'] },
                 { icon: <MapPin className="w-6 h-6 text-accent" />, label: t.contact.address, lines: t.contact.addrLines as readonly string[] },
                 { icon: <Clock className="w-6 h-6 text-accent" />, label: t.contact.hours, lines: t.contact.hoursLines as readonly string[] },
               ].map((item) => (

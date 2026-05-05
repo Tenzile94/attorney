@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { MapPin, Phone, Mail, Clock, Award, BookOpen, Briefcase } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Award, BookOpen, Briefcase, Medal } from 'lucide-react'
 import SiteHeader from '@/components/site-header'
 import { useLanguage } from '@/lib/i18n'
 
@@ -9,9 +9,11 @@ export default function AboutPage() {
   const ap = t.aboutPage as {
     heroTitle: string; heroSub: string; whoTitle: string; whoPs: readonly string[]
     eduTitle: string; expTitle: string; specTitle: string
+    awardsTitle: string
     ctaTitle: string; ctaSub: string; ctaCall: string; ctaEmail: string
     specs: readonly { icon: string; title: string; desc: string }[]
     experience: readonly { years: string; org: string; role: string; desc: string }[]
+    awards: readonly { date: string; text: string }[]
   }
 
   return (
@@ -55,7 +57,6 @@ export default function AboutPage() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2">{t.practice.education[0].title}</h3>
                     <p className="text-muted-foreground text-sm">{t.practice.education[0].sub}</p>
-                    <p className="text-accent text-sm font-semibold mt-1">1995 – 1999</p>
                   </div>
                 </div>
                 <p className="text-muted-foreground text-sm">{t.practice.education[0].desc}</p>
@@ -94,6 +95,26 @@ export default function AboutPage() {
             </div>
           </div>
 
+          {/* Awards & Honorary Titles */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-serif font-bold mb-12 text-accent flex items-center gap-3">
+              <Medal className="w-8 h-8" /> {ap.awardsTitle}
+            </h2>
+            <div className="space-y-4">
+              {ap.awards.map((award, i) => (
+                <div key={i} className="flex gap-5 p-6 bg-card border border-accent/20 rounded-xl">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center">
+                    <Award className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-accent font-semibold text-sm mb-1">{award.date}</p>
+                    <p className="text-muted-foreground leading-relaxed">{award.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Specializations */}
           <div>
             <h2 className="text-3xl font-serif font-bold mb-12 text-accent">{ap.specTitle}</h2>
@@ -117,7 +138,7 @@ export default function AboutPage() {
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">{ap.ctaSub}</p>
           <div className="flex gap-4 justify-center">
             <a href="tel:+994502115474" className="px-8 py-3 bg-accent text-primary font-semibold hover:opacity-90 transition rounded">{ap.ctaCall}</a>
-            <a href="mailto:ayazbay@huquqcu.com" className="px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">{ap.ctaEmail}</a>
+            <a href="mailto:abbas.karimbayli@gmail.com" className="px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded">{ap.ctaEmail}</a>
           </div>
         </div>
       </section>
@@ -140,14 +161,14 @@ export default function AboutPage() {
               <Mail className="w-6 h-6 text-accent flex-shrink-0" />
               <div>
                 <p className="font-semibold text-accent mb-2">{t.contact.email}</p>
-                <p className="text-muted-foreground text-sm">ayazbay@huquqcu.com</p>
+                <p className="text-muted-foreground text-sm">abbas.karimbayli@gmail.com</p>
               </div>
             </div>
             <div className="flex gap-4">
               <MapPin className="w-6 h-6 text-accent flex-shrink-0" />
               <div>
                 <p className="font-semibold text-accent mb-2">{t.contact.address}</p>
-                <p className="text-muted-foreground text-sm">Bakı, Aziz Ələkbərov 201</p>
+                <p className="text-muted-foreground text-sm">AZ1014, Bakı, Nəsimi r., Füzuli küçəsi 47, Fides Vəkil Bürosu</p>
               </div>
             </div>
             <div className="flex gap-4">

@@ -110,7 +110,7 @@ export default function Home() {
               <ul className="text-muted-foreground text-sm space-y-3">
                 <li><Link href="/services/kommersiya-huququ" className="hover:text-accent transition-colors">Kommersiya Hüququ</Link></li>
                 <li><Link href="/services/cinayat-huququ" className="hover:text-accent transition-colors">Cinayət Hüququ</Link></li>
-                <li><Link href="/services/ailə-huququ" className="hover:text-accent transition-colors">Ailə Hüququ</Link></li>
+                <li><Link href="/services/aile-huququ" className="hover:text-accent transition-colors">Ailə Hüququ</Link></li>
                 <li><Link href="/services/mulk-huququ" className="hover:text-accent transition-colors">Mülk Hüququ</Link></li>
                 <li><Link href="/services/amak-huququ" className="hover:text-accent transition-colors">Əmək Hüququ</Link></li>
                 <li><Link href="/services/idari-huquq" className="hover:text-accent transition-colors">İdari Hüquq</Link></li>
@@ -127,12 +127,12 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:ayazbay@huquqcu.com" className="hover:text-accent transition-colors flex items-start gap-2">
-                    <span className="text-accent mt-0.5">✉</span>ayazbay@huquqcu.com
+                  <a href="mailto:abbas.karimbayli@gmail.com" className="hover:text-accent transition-colors flex items-start gap-2">
+                    <span className="text-accent mt-0.5">✉</span>abbas.karimbayli@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-0.5">📍</span>Bakı, Aziz Ələkbərov 201
+                  <span className="text-accent mt-0.5">📍</span>Füzuli küçəsi 47, Fides Vəkil Bürosu
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-0.5">🕐</span>{t.nav.hours}

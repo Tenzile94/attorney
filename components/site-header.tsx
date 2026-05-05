@@ -52,11 +52,11 @@ export default function SiteHeader() {
               </svg>
               +994 50 211 54 74
             </a>
-            <a href="mailto:ayazbay@huquqcu.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+            <a href="mailto:abbas.karimbayli@gmail.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
               <svg className="w-3 h-3 text-accent" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
-              ayazbay@huquqcu.com
+              abbas.karimbayli@gmail.com
             </a>
           </div>
           <div className="hidden md:flex items-center gap-3">
