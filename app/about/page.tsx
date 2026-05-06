@@ -151,6 +151,9 @@ export default function AboutPage() {
               <Phone className="w-6 h-6 text-accent flex-shrink-0" />
               <div>
                 <p className="font-semibold text-accent mb-2">{t.contact.phone}</p>
+                <a href="tel:+994124989595" className="flex items-center gap-1.5 text-muted-foreground text-sm hover:text-accent transition-colors mb-1">
+                  +994 12 498 95 95
+                </a>
                 <a href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-muted-foreground text-sm hover:text-accent transition-colors">
                   +994 50 211 54 74
                   <Image src="/whatsapp.svg" alt="WhatsApp" width={13} height={13} className="w-3 h-3 brightness-0 invert opacity-60" />

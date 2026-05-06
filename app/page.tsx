@@ -122,6 +122,11 @@ export default function Home() {
               <h4 className="font-semibold text-base text-white mb-5">{t.footer.contact}</h4>
               <ul className="text-muted-foreground text-sm space-y-3">
                 <li>
+                  <a href="tel:+994124989595" className="hover:text-accent transition-colors flex items-start gap-2">
+                    <span className="text-accent mt-0.5">📞</span>+994 12 498 95 95
+                  </a>
+                </li>
+                <li>
                   <a href="tel:+994502115474" className="hover:text-accent transition-colors flex items-start gap-2">
                     <span className="text-accent mt-0.5">📞</span>+994 50 211 54 74
                   </a>

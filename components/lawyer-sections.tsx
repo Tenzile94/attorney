@@ -395,10 +395,13 @@ export const ContactSection = () => {
                   icon: <Phone className="w-6 h-6 text-accent" />,
                   label: t.contact.phone,
                   lines: [
+                    <a key="office" href="tel:+994124989595" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+                      <span className="text-white/50 text-xs">{(t.contact as {officePhone: string}).officePhone}:</span> +994 12 498 95 95
+                    </a>,
                     <a key="wa" href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-accent transition-colors">
                       +994 50 211 54 74
                       <Image src="/whatsapp.svg" alt="WhatsApp" width={14} height={14} className="w-3.5 h-3.5 brightness-0 invert opacity-70" />
-                    </a>
+                    </a>,
                   ] as React.ReactNode[],
                 },
                 { icon: <Mail className="w-6 h-6 text-accent" />, label: t.contact.email, lines: ['abbas.karimbayli@gmail.com'] },
@@ -574,6 +577,10 @@ export const MapSection = () => {
           >
             <MapPin className="w-4 h-4 text-accent" />
             {t.map.address}
+          </a>
+          <a href="tel:+994124989595" className="flex items-center gap-2 hover:text-accent transition-colors">
+            <Phone className="w-4 h-4 text-accent" />
+            +994 12 498 95 95
           </a>
           <a href="https://wa.me/994502115474" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
             <Phone className="w-4 h-4 text-accent" />

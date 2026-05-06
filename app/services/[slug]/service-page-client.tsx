@@ -128,6 +128,12 @@ export default function ServicePageClient({ service, otherServices }: Props) {
                   {isEn ? 'Your first consultation about this service is free' : 'Bu xidmət haqqında ilk məsləhətiniz pulsuz'}
                 </p>
                 <div className="space-y-3 mb-6">
+                  <a href="tel:+994124989595" className="flex items-center gap-3 text-sm hover:text-accent transition">
+                    <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-4 h-4 text-accent" />
+                    </div>
+                    +994 12 498 95 95
+                  </a>
                   <a href="tel:+994502115474" className="flex items-center gap-3 text-sm hover:text-accent transition">
                     <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                       <Phone className="w-4 h-4 text-accent" />
@@ -211,6 +217,7 @@ export default function ServicePageClient({ service, otherServices }: Props) {
             <div>
               <h4 className="font-semibold text-accent mb-3">{t.footer.contact}</h4>
               <div className="space-y-2 text-muted-foreground text-sm">
+                <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-accent" /> +994 12 498 95 95</p>
                 <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-accent" /> +994 50 211 54 74</p>
                 <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-accent" /> abbas.karimbayli@gmail.com</p>
                 <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> Füzuli küçəsi 47, Fides Vəkil Bürosu</p>
