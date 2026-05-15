@@ -14,6 +14,8 @@ export default function AboutPage() {
     specs: readonly { icon: string; title: string; desc: string }[]
     experience: readonly { years: string; org: string; role: string; desc: string }[]
     awards: readonly { date: string; text: string }[]
+    galleryTitle: string
+    gallery: readonly { src: string; alt: string }[]
   }
 
   return (
@@ -181,6 +183,30 @@ export default function AboutPage() {
                 <p className="text-muted-foreground text-sm">{t.nav.hours}</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery — three images */}
+      <section className="py-16 bg-card border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-serif font-bold mb-10 text-center text-accent">{ap.galleryTitle}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+            {ap.gallery.map((img, i) => (
+              <div
+                key={i}
+                className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-white/[0.08] shadow-[0_12px_40px_rgba(0,0,0,0.4)] hover:border-accent/40 transition-all duration-300"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </div>
+            ))}
           </div>
         </div>
       </section>

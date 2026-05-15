@@ -161,6 +161,12 @@ export const translations = {
         { date: '24.12.2019', text: 'Vəkillər Kollegiyası Rəyasət Heyətinin qərarı ilə "Azərbaycan Vəkilliyinin 100 illiyi (1919–2019)" yubiley döş nişanı ilə təltif edilmişdir.' },
         { date: '21.07.2023', text: 'Vəkillər Kollegiyası Rəyasət Heyətinin qərarı ilə Fəxri Hüquq Doktoru adı ilə təltif edilmişdir.' },
       ],
+      galleryTitle: 'Ofis və Fəaliyyət',
+      gallery: [
+        { src: '/office-interior.jpg', alt: 'Fides Vəkil Bürosu — ofis' },
+        { src: '/consultation.jpg', alt: 'Hüquqi konsultasiya' },
+        { src: '/courtroom.jpg', alt: 'Məhkəmə zalı' },
+      ],
     },
     stats: [
       { value: '25+', label: 'İl Təcrübə' },
@@ -335,6 +341,12 @@ export const translations = {
         { date: '06.09.2018', text: 'Awarded the Honorary Certificate by decision of the Presidium of the Bar Association.' },
         { date: '24.12.2019', text: 'Awarded the jubilee badge "100th Anniversary of the Azerbaijan Bar (1919–2019)" by decision of the Presidium of the Bar Association.' },
         { date: '21.07.2023', text: 'Awarded the title of Honorary Doctor of Law by decision of the Presidium of the Bar Association.' },
+      ],
+      galleryTitle: 'Office & Practice',
+      gallery: [
+        { src: '/office-interior.jpg', alt: 'Fides Law Office — interior' },
+        { src: '/consultation.jpg', alt: 'Legal consultation' },
+        { src: '/courtroom.jpg', alt: 'Courtroom' },
       ],
     },
     stats: [
