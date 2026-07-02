@@ -322,13 +322,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-card border-t border-border py-8">
-        <div className="max-w-7xl mx-auto px-4 text-center text-muted-foreground text-sm">
-          <p>&copy; 2026 {t.footer.copyright}</p>
-        </div>
-      </footer>
     </div>
   );
 }
