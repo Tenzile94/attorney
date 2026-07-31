@@ -86,7 +86,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-serif font-bold mb-12 text-accent flex items-center gap-3">
               <BookOpen className="w-8 h-8" /> {ap.eduTitle}
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-1 gap-8">
               <div className="p-8 bg-card border border-border/50 rounded-lg">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -98,24 +98,6 @@ export default function AboutPage() {
                     </h3>
                     <p className="text-muted-foreground text-sm">
                       {t.practice.education[0].sub}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="p-8 bg-card border border-accent/30 rounded-lg">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Award className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">
-                      {t.practice.education[1].title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {t.practice.education[1].sub}
-                    </p>
-                    <p className="text-accent text-sm font-semibold mt-1">
-                      2010
                     </p>
                   </div>
                 </div>
@@ -253,7 +235,7 @@ export default function AboutPage() {
                 >
                   +994 50 211 54 74
                   <Image
-                    src="/whatsapp.svg"
+                    src="/whatsapp-white.svg"
                     alt="WhatsApp"
                     width={13}
                     height={13}
@@ -280,7 +262,8 @@ export default function AboutPage() {
                   {t.contact.address}
                 </p>
                 <p className="text-muted-foreground text-sm">
-                  AZ1014, Bakı, Nəsimi r., Füzuli küçəsi 47, Fides Vəkil Bürosu
+                  AZ1014, Bakı, Nəsimi r., Füzuli küç.,45A Bakı, Azərbaycan,
+                  Baku 47 sayli bina, Fides Fides Vəkil Bürosu
                 </p>
               </div>
             </div>

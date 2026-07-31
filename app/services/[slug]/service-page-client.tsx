@@ -85,7 +85,14 @@ export default function ServicePageClient({ service, otherServices }: Props) {
                 href="tel:+994502115474"
                 className="inline-flex items-center gap-2 px-8 py-3 border border-accent text-accent font-semibold hover:bg-accent/10 transition rounded"
               >
-                📞 {t.nav.call}
+                <Image
+                  src="/phone.svg"
+                  alt="Phone"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                {t.nav.call}
               </a>
             </div>
           </div>

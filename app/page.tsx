@@ -25,16 +25,30 @@ export default function Home() {
         {[
           {
             href: "https://wa.me/994502115474",
-            file: "whatsapp",
+            file: "whatsapp-white",
             label: "WhatsApp",
           },
-          { href: "https://facebook.com", file: "facebook", label: "Facebook" },
-          { href: "https://t.me", file: "telegram", label: "Telegram" },
           {
-            href: "https://instagram.com",
+            href: "https://www.facebook.com/share/1EyB2LiMJ2/?mibextid=wwXIfr",
+            file: "facebook",
+            label: "Facebook",
+          },
+          {
+            href: "https://www.tiktok.com/@abbas_karimbayli?_r=1&_t=ZS-97yPyIud8QS",
+            file: "tiktok",
+            label: "TikTok",
+          },
+          {
+            href: "https://www.instagram.com/abbaskarimbayli?igsh=MTZ1Mmt4MjE4dnl5aw==",
             file: "instagram",
             label: "Instagram",
           },
+          {
+            href: "https://www.linkedin.com/in/abbas-karimbayli-3b546417b?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+            file: "linkedin",
+            label: "LinkedIn",
+          },
+          { href: "https://t.me", file: "telegram", label: "Telegram" },
         ].map((s) => (
           <a
             key={s.file}
@@ -42,14 +56,14 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             title={s.label}
-            className="w-11 h-11 bg-card border border-white/[0.08] rounded-xl flex items-center justify-center hover:border-accent/50 hover:bg-accent/10 hover:scale-110 transition-all duration-200 shadow-lg"
+            className="w-9 h-9 bg-card border border-white/[0.08] rounded-xl flex items-center justify-center hover:border-accent/50 hover:bg-accent/10 hover:scale-105 transition-all duration-200 shadow-lg"
           >
             <Image
               src={`/${s.file}.svg`}
               alt={s.label}
-              width={22}
-              height={22}
-              className="w-5 h-5 object-contain brightness-0 invert"
+              width={18}
+              height={18}
+              className="w-4 h-4 object-contain brightness-0 invert"
             />
           </a>
         ))}

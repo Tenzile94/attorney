@@ -11,6 +11,11 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "Vəkil Kərimbəyli Abbas Yaqub oğlu | Hüquqi Xidmətlər",
   description: "Azərbaycanda peşəkar hüquqi xidmətlər",
+  icons: {
+    icon: "/logo-main.png",
+    shortcut: "/logo-main.png",
+    apple: "/logo-main.png",
+  },
 };
 
 export default function RootLayout({

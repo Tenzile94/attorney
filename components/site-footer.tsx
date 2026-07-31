@@ -13,10 +13,13 @@ export default function SiteFooter() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center">
-                <span className="text-accent font-serif font-bold text-base leading-none">
-                  V
-                </span>
+              <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-white/[0.08] bg-background/10">
+                <Image
+                  src="/logo-main.png"
+                  alt="Kərimbəyli Abbas logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div>
                 <div className="text-white font-serif font-bold text-sm leading-tight">
@@ -96,32 +99,59 @@ export default function SiteFooter() {
               <li>
                 <a
                   href="tel:+994124989595"
-                  className="hover:text-accent transition-colors flex items-start gap-2"
+                  className="hover:text-accent transition-colors flex items-center gap-2"
                 >
-                  <span className="text-accent mt-0.5">📞</span>+994 12 498 95
-                  95
+                  <Image
+                    src="/phone.svg"
+                    alt="Phone"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                  +994 12 498 95 95
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+994502115474"
-                  className="hover:text-accent transition-colors flex items-start gap-2"
+                  href="https://wa.me/994502115474"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors flex items-center gap-2"
                 >
-                  <span className="text-accent mt-0.5">📞</span>+994 50 211 54
-                  74
+                  <Image
+                    src="/whatsapp-white.svg"
+                    alt="WhatsApp"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                  +994 50 211 54 74
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:abbas.karimbayli@gmail.com"
-                  className="hover:text-accent transition-colors flex items-start gap-2"
+                  className="hover:text-accent transition-colors flex items-center gap-2"
                 >
-                  <span className="text-accent mt-0.5">✉</span>
+                  <Image
+                    src="/envelope.svg"
+                    alt="Email"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
                   abbas.karimbayli@gmail.com
                 </a>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-accent mt-0.5">📍</span>Füzuli küçəsi 47,
+              <li className="flex items-center gap-2">
+                <Image
+                  src="/location.svg"
+                  alt="Location"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                Füzuli küç.,45A Bakı, Azərbaycan, Baku 47 sayli bina, Fides
                 Fides Vəkil Bürosu
               </li>
               <li className="flex items-start gap-2">
@@ -139,19 +169,29 @@ export default function SiteFooter() {
               {[
                 {
                   label: "Facebook",
-                  href: "https://facebook.com",
+                  href: "https://www.facebook.com/share/1EyB2LiMJ2/?mibextid=wwXIfr",
                   file: "facebook",
                 },
                 {
                   label: "Instagram",
-                  href: "https://instagram.com",
+                  href: "https://www.instagram.com/abbaskarimbayli?igsh=MTZ1Mmt4MjE4dnl5aw==",
                   file: "instagram",
+                },
+                {
+                  label: "TikTok",
+                  href: "https://www.tiktok.com/@abbas_karimbayli?_r=1&_t=ZS-97yPyIud8QS",
+                  file: "tiktok",
+                },
+                {
+                  label: "LinkedIn",
+                  href: "https://www.linkedin.com/in/abbas-karimbayli-3b546417b?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+                  file: "linkedin",
                 },
                 { label: "Telegram", href: "https://t.me", file: "telegram" },
                 {
                   label: "WhatsApp",
                   href: "https://wa.me/994502115474",
-                  file: "whatsapp",
+                  file: "whatsapp-white",
                 },
               ].map((s) => (
                 <a
@@ -159,15 +199,15 @@ export default function SiteFooter() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-accent transition-colors group"
+                  className="flex items-center gap-3 text-xs text-muted-foreground hover:text-accent transition-colors group"
                 >
-                  <span className="w-7 h-7 rounded bg-white/[0.05] border border-white/[0.07] flex items-center justify-center group-hover:border-accent/30 transition-colors">
+                  <span className="w-6 h-6 rounded bg-white/[0.05] border border-white/[0.07] flex items-center justify-center group-hover:border-accent/30 transition-colors">
                     <Image
                       src={`/${s.file}.svg`}
                       alt={s.label}
-                      width={16}
-                      height={16}
-                      className="w-4 h-4 object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity"
+                      width={14}
+                      height={14}
+                      className="w-3 h-3 object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity"
                     />
                   </span>
                   {s.label}
@@ -230,7 +270,7 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-white/[0.04] bg-background/40">
+      {/* <div className="border-t border-white/[0.04] bg-background/40">
         <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
           <p>&copy; 2026 {t.footer.copyright}</p>
           <div className="flex items-center gap-5">
@@ -243,7 +283,7 @@ export default function SiteFooter() {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 }

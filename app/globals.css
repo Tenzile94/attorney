@@ -20,8 +20,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Lora', serif;
+  --font-sans: 'Gilori', sans-serif;
+  --font-serif: 'Gilori', sans-serif;
   --color-background: rgb(var(--background));
   --color-foreground: rgb(var(--foreground));
   --color-card: rgb(var(--card));

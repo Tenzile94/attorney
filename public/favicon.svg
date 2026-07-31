@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="fTitle">
+  <title id="fTitle">Kərimbəyli favicon</title>
+  <rect width="64" height="64" rx="10" fill="#064e3b" />
+  <g transform="translate(8,8) scale(0.75)" fill="#fff">
+    <path d="M24 2 L40 10 L40 34 C40 48 30 56 24 60 C18 56 8 48 8 34 L8 10 Z" opacity="0.06" />
+    <path d="M24 6 v10" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M10 36 h28" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <circle cx="10" cy="36" r="3" fill="#fff" />
+    <circle cx="38" cy="36" r="3" fill="#fff" />
+  </g>
+</svg>

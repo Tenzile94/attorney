@@ -59,16 +59,23 @@ export const HeroSection = () => {
     <section className="relative min-h-screen flex items-center overflow-x-hidden">
       <div className="absolute inset-0 z-0">
         <Image
+          src="/img7.jpeg"
+          alt="Hero mobile"
+          fill
+          className="object-cover object-top md:hidden"
+          style={{ objectPosition: "60% 20%" }}
+        />
+        <Image
           src="/hero-bg.jpg"
           alt="Hero"
           fill
-          className="object-cover opacity-40"
+          className="object-cover opacity-40 hidden md:block"
         />
-        <div className="absolute inset-0 bg-background/60 md:bg-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+        <div className="absolute inset-0 bg-black/60 md:bg-transparent" />
+        <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-background/60 via-background/40 to-transparent" />
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-5 pt-16 pb-14 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
-        <div className="text-center md:text-left">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 pt-32 pb-14 md:py-20 grid md:grid-cols-2 gap-16 items-center w-full">
+        <div className="text-left bg-black/40 md:bg-transparent p-6 mt-32 md:mt-0 rounded-xl">
           <FadeUp delay={0.05}>
             <span className="inline-block text-xs uppercase tracking-[0.2em] text-accent border border-accent/40 rounded-full px-4 py-1 mb-5">
               {t.hero.badge}
@@ -76,11 +83,19 @@ export const HeroSection = () => {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-white leading-snug mb-4">
-              {t.hero.titlePre}
-              <span className="text-accent">{t.hero.titleAccent}</span>
-              {t.hero.titlePost}
-            </h1>
+            <div className="hidden md:flex items-center gap-3 mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white leading-snug mb-4">
+                {t.hero.titlePre}
+
+                <span className="text-accent">{t.hero.titleAccent}</span>
+                {t.hero.titlePost}
+              </h1>
+            </div>
+            <div className="flex md:hidden items-center gap-3 ">
+              <h1 className="text-2xl sm:text-3xl font-serif font-bold text-white leading-snug mb-2">
+                {t.hero.mobTitlePre}
+              </h1>
+            </div>
           </FadeUp>
 
           <FadeUp delay={0.2}>
@@ -90,7 +105,7 @@ export const HeroSection = () => {
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-8">
+            <div className="hidden md:flex flex-wrap gap-2 justify-start mb-8">
               {t.hero.pills.map((tag: string) => (
                 <span
                   key={tag}
@@ -103,7 +118,7 @@ export const HeroSection = () => {
           </FadeUp>
 
           <FadeUp delay={0.4}>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+            <div className="hidden md:flex flex-col sm:flex-row gap-3 justify-start md:justify-start">
               <CtaButton className="px-7 py-3.5 bg-accent text-black font-semibold hover:opacity-90 transition rounded text-sm">
                 {t.hero.cta}
               </CtaButton>
@@ -115,15 +130,66 @@ export const HeroSection = () => {
               </Link>
             </div>
 
-            <a
-              href="tel:+994502115474"
-              className="inline-flex items-center gap-2 mt-5 text-sm text-white/60 hover:text-accent transition-colors"
-            >
-              <span className="text-accent">📞</span> +994 50 211 54 74
-            </a>
+            {/* Mobile-only contact info: two phones + address, left aligned */}
+            <div className="mt-4 md:hidden text-left space-y-2">
+              <a
+                href="https://goo.gl/maps/1X5Z6Q8F7k9v1Y5D9"
+                className="flex items-start justify-between gap-2 text-sm text-white/90 hover:text-accent"
+              >
+                <Image
+                  src="/location.svg"
+                  alt="Location"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                AZ1014, Bakı, Nəsimi r., Füzuli küçəsi 45A Bakı, Azərbaycan,
+                Baku 47 sayli bina, Fides Vəkil Bürosu
+              </a>
+              <a
+                href="tel:+994124989595"
+                className="flex items-center gap-2 text-sm text-white/90 hover:text-accent"
+              >
+                <Image
+                  src="/phone.svg"
+                  alt="Phone"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                +994 12 498 95 95
+              </a>
+              <a
+                href="https://wa.me/994502115474"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-white/90 hover:text-accent"
+              >
+                <Image
+                  src="/whatsapp-white.svg"
+                  alt="WhatsApp"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                +994 50 211 54 74
+              </a>
+              <a
+                href="mailto:abbas.karimbayli@gmail.com"
+                className="flex items-center gap-2 text-sm text-white/90 hover:text-accent"
+              >
+                <Image
+                  src="/envelope.svg"
+                  alt="Email"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                abbas.karimbayli@gmail.com
+              </a>
+            </div>
           </FadeUp>
         </div>
-
         <SlideIn
           from="right"
           delay={0.2}
@@ -362,7 +428,7 @@ export const PracticeSection = () => {
           <h3 className="text-2xl font-serif font-bold mb-8 text-accent">
             {t.practice.eduTitle}
           </h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-1 gap-6">
             {(
               t.practice.education as readonly {
                 icon: string;
@@ -579,7 +645,7 @@ export const ContactSection = () => {
                     >
                       +994 50 211 54 74
                       <Image
-                        src="/whatsapp.svg"
+                        src="/whatsapp-white.svg"
                         alt="WhatsApp"
                         width={14}
                         height={14}
@@ -675,7 +741,7 @@ export const ContactSection = () => {
                   <div className="relative">
                     <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5 pointer-events-none">
                       <Image
-                        src="/whatsapp.svg"
+                        src="/whatsapp-white.svg"
                         alt="WhatsApp"
                         width={16}
                         height={16}
@@ -861,7 +927,7 @@ export const MapSection = () => {
             <Phone className="w-4 h-4 text-accent" />
             +994 50 211 54 74
             <Image
-              src="/whatsapp.svg"
+              src="/whatsapp-white.svg"
               alt="WhatsApp"
               width={13}
               height={13}
