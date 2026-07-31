@@ -9,7 +9,8 @@ const lora = Lora({ subsets: ["latin"], variable: "--font-lora" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Vəkil Kərimbəyli Abbas Yaqub oğlu | Hüquqi Xidmətlər",
+  title:
+    "Vəkil Kərimbəyli Abbas Yaqub oğlu | Vəkillər Kollegiasinin üzvü , Hüquqşünas.| Hüquqi Xidmətlər",
   description: "Azərbaycanda peşəkar hüquqi xidmətlər",
   icons: {
     icon: "/logo-main.png",
