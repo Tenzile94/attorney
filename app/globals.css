@@ -1,27 +1,27 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: 7 10 18;          /* #070a12 — deepest navy */
-  --foreground: 248 248 252;      /* near-pure white */
-  --card: 12 18 30;               /* #0c121e — slightly lighter layer */
+  --background: 7 10 18; /* #070a12 — deepest navy */
+  --foreground: 248 248 252; /* near-pure white */
+  --card: 12 18 30; /* #0c121e — slightly lighter layer */
   --card-foreground: 248 248 252;
-  --primary: 16 24 40;            /* #101828 — mid-dark for header / CTA bands */
+  --primary: 16 24 40; /* #101828 — mid-dark for header / CTA bands */
   --primary-foreground: 255 255 255;
-  --accent: 188 152 68;           /* #bc9844 — warm gold */
+  --accent: 188 152 68; /* #bc9844 — warm gold */
   --accent-foreground: 8 8 8;
   --muted: 80 92 112;
   --muted-foreground: 148 162 185;
-  --border: 28 40 60;             /* #1c283c — subtle but visible */
+  --border: 28 40 60; /* #1c283c — subtle but visible */
   --input: 16 24 42;
   --ring: 188 152 68;
 }
 
 @theme inline {
-  --font-sans: 'Gilori', sans-serif;
-  --font-serif: 'Gilori', sans-serif;
+  --font-sans: "Gilori", sans-serif;
+  --font-serif: "Gilori", sans-serif;
   --color-background: rgb(var(--background));
   --color-foreground: rgb(var(--foreground));
   --color-card: rgb(var(--card));
@@ -61,12 +61,24 @@
     animation: fadeIn 0.3s ease-in;
   }
   .bg-gold-gradient {
-    background: linear-gradient(90deg, #7a5c1c 0%, #b8881e 25%, #e0b84a 50%, #b8881e 75%, #7a5c1c 100%);
+    background: linear-gradient(
+      90deg,
+      #7a5c1c 0%,
+      #b8881e 25%,
+      #e0b84a 50%,
+      #b8881e 75%,
+      #7a5c1c 100%
+    );
   }
   .card-glow {
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.5);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 4px 24px rgba(0, 0, 0, 0.5);
   }
   .card-glow-hover:hover {
-    box-shadow: 0 0 0 1px rgba(188,152,68,0.4), 0 8px 32px rgba(0,0,0,0.6), 0 0 20px rgba(188,152,68,0.08);
+    box-shadow:
+      0 0 0 1px rgba(188, 152, 68, 0.4),
+      0 8px 32px rgba(0, 0, 0, 0.6),
+      0 0 20px rgba(188, 152, 68, 0.08);
   }
 }
