@@ -13,7 +13,7 @@ export default function SiteFooter() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="relative w-14 h-14 overflow-hidden border border-white/[0.08] bg-background/10">
+              <div className="relative w-14 h-14 overflow-hidden  ">
                 <Image
                   src="/logo-main.png"
                   alt="Kərimbəyli Abbas logo"

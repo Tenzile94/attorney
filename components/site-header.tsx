@@ -115,7 +115,7 @@ export default function SiteHeader() {
             href="/"
             className="flex items-center gap-3 flex-shrink-0 group"
           >
-            <div className="relative w-14 h-14">
+            <div className="relative w-16 h-16">
               <Image
                 src="/logo-main.png"
                 alt="Kərimbəyli Abbas logo"
