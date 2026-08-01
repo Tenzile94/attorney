@@ -56,7 +56,7 @@ const CtaButton = ({
 export const HeroSection = () => {
   const { t } = useLanguage();
   return (
-    <section className="relative min-h-screen flex items-center overflow-x-hidden">
+    <section className="relative min-h-[70vh] flex items-center overflow-x-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/img7.jpeg"

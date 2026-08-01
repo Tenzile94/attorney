@@ -41,7 +41,7 @@ export const translations = {
       title: "Vəkil Kərimbəyli Abbas Yaqub oğlu haqqında",
       p1: "19 ildən artıq peşəkar hüquqi təcrübəyə malik olaraq, müştərilərimin hüquqlarını qorumaq və onların problemlərinə effektiv həllər təqdim etmək əsas məqsədimdir.",
       p2: "Fəaliyyətim ərzində cinayət, əmlak və əşya hüququ , vərəsəlik hüququ və ailə hüququ sahələrində yüzlərlə iş üzrə uğurlu nəticələr əldə etmişəm. Azərbaycan Respublikasının Vəkillər Kollegiyasının intizam komissiyasının üzvü olaraq rəsmi fəaliyyət göstərirəm.",
-      p3: "Mənim yanaşmam yalnız hüquqi biliklərlə deyil, eyni zamanda məsuliyyət, etika və hər bir müştəriyə fərdi diqqət prinsipləri ilə formalaşır.",
+      p3: "Mənim yanaşmam yalnız hüquqi biliklərlə deyil, eyni zamanda məsuliyyət, etika, etibarlı əməkdaşlıq və hər bir müştəriyə fərdi diqqət prinsipləri ilə formalaşır.",
       bullets: [
         "24 saat ərzində operativ cavab",
         "İlk konsultasiya imkanı",
@@ -314,6 +314,10 @@ export const translations = {
       privacy: "Məxfilik Siyasəti",
       terms: "İstifadə Şərtləri",
       copyright: "Vəkil Kərimbəyli Abbas Yaqub oğlu. Bütün hüquqlar qorunur.",
+      domainOne: "advokat.az",
+      domainOneHref: "https://advokat.az",
+      domainTwo: "abbaskarimbayli.az",
+      domainTwoHref: "https://www.abbaskarimbayli.az/",
     },
   },
 
@@ -346,7 +350,7 @@ export const translations = {
       title: "About Lawyer Abbas Kərimbəyli",
       p1: "With over 25 years of professional legal experience, my main goal is to protect my clients' rights and provide effective solutions to their problems.",
       p2: "During my career, I have achieved successful results in hundreds of cases in criminal, civil and family law. I am officially registered as a member of the Bar Association of the Republic of Azerbaijan.",
-      p3: "My approach is shaped not only by legal knowledge, but also by the principles of responsibility, ethics and individual attention to each client.",
+      p3: "My approach is shaped not only by legal expertise but also by a commitment to responsibility, ethical standards, reliable collaboration, and providing every client with personalized attention.",
       bullets: [
         "24-hour rapid response",
         "Initial consultation available",
@@ -612,6 +616,10 @@ export const translations = {
       privacy: "Privacy Policy",
       terms: "Terms of Use",
       copyright: "Lawyer Abbas Kərimbəyli. All rights reserved.",
+      domainOne: "advokat.az",
+      domainOneHref: "https://advokat.az",
+      domainTwo: "abbaskarimbayli.az",
+      domainTwoHref: "https://www.abbaskarimbayli.az/",
     },
   },
 } as const;

@@ -13,7 +13,7 @@ export default function SiteFooter() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-white/[0.08] bg-background/10">
+              <div className="relative w-14 h-14 overflow-hidden border border-white/[0.08] bg-background/10">
                 <Image
                   src="/logo-main.png"
                   alt="Kərimbəyli Abbas logo"
@@ -270,20 +270,32 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      {/* <div className="border-t border-white/[0.04] bg-background/40">
+      <div className="border-t border-white/[0.06] bg-background/40">
         <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
-          <p>&copy; 2026 {t.footer.copyright}</p>
-          <div className="flex items-center gap-5">
-            <Link href="#" className="hover:text-accent transition-colors">
-              {t.footer.privacy}
-            </Link>
-            <span className="text-white/10">|</span>
-            <Link href="#" className="hover:text-accent transition-colors">
-              {t.footer.terms}
-            </Link>
+          <p className="text-center md:text-left">
+            &copy; {new Date().getFullYear()} {t.footer.copyright}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={t.footer.domainOneHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              {t.footer.domainOne}
+            </a>
+            <span className="text-white/20">|</span>
+            <a
+              href={t.footer.domainTwoHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              {t.footer.domainTwo}
+            </a>
           </div>
         </div>
-      </div> */}
+      </div>
     </footer>
   );
 }
